@@ -16,7 +16,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public interface MentoreMapper {
     Mentore fromMentoreReqDTO(MentoreReqDTO mentoreReqDTO);
-     Location fromLocationReqDTO(@Valid LocationReqDTO locationReqDTO);
+    Location fromLocationReqDTO(@Valid LocationReqDTO locationReqDTO);
 
     MentoreRespDTO fromMentore(Mentore mentore);
     LocationRespDTO fromLocation(Location location);
