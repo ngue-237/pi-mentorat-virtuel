@@ -31,4 +31,73 @@ public class Ressource implements Serializable {
     private Boolean etat;
     private Category category;
 
+    public Ressource() {
+    }
+
+    public Ressource(Integer idRessource, String description, Double prix, Date creatAt, Date updateAt, Boolean etat, Category category) {
+        this.idRessource = idRessource;
+        this.description = description;
+        this.prix = prix;
+        this.creatAt = creatAt;
+        UpdateAt = updateAt;
+        this.etat = etat;
+        this.category = category;
+    }
+
+    public Integer getIdRessource() {
+        return idRessource;
+    }
+
+    public void setIdRessource(Integer idRessource) {
+        this.idRessource = idRessource;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Double getPrix() {
+        return prix;
+    }
+
+    public void setPrix(Double prix) {
+        this.prix = prix;
+    }
+
+    public Date getCreatAt() {
+        return creatAt;
+    }
+
+    public void setCreatAt(Date creatAt) {
+        this.creatAt = creatAt;
+    }
+
+    public Date getUpdateAt() {
+        return UpdateAt;
+    }
+
+    public void setUpdateAt(Date updateAt) {
+        UpdateAt = updateAt;
+    }
+
+    public Boolean getEtat() {
+        return etat;
+    }
+
+    public void setEtat(Boolean etat) {
+        this.etat = etat;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 }
+

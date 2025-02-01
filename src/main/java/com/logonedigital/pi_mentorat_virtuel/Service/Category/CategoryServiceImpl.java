@@ -1,15 +1,17 @@
 package com.logonedigital.pi_mentorat_virtuel.Service.Category;
 
+import com.logonedigital.pi_mentorat_virtuel.Exception.RessourceNotFoundException;
 import com.logonedigital.pi_mentorat_virtuel.entities.Category;
 import com.logonedigital.pi_mentorat_virtuel.repository.CategoryRepo;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
-public class CategoryImpl implements CategoryService {
+@Service
+public class CategoryServiceImpl implements CategoryService {
     private final CategoryRepo categoryRepo;
 
-    public CategoryImpl(CategoryRepo categoryRepo) {
+    public CategoryServiceImpl(CategoryRepo categoryRepo) {
         this.categoryRepo = categoryRepo;
     }
 
