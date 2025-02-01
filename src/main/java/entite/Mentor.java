@@ -9,7 +9,7 @@ import lombok.Setter;
 
 import java.util.Date;
 
-public class Mentor {
+
 
     @Entity
     @AllArgsConstructor
@@ -111,4 +111,4 @@ public class Mentor {
         }
     }
 
-}
+
