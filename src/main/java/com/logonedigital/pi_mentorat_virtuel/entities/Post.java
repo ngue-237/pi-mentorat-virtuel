@@ -7,30 +7,42 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.Date;
+import java.util.List;
 
-@Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "commentaire")
-public class Commentaire {
+@Entity
+@Table(name = "post")
+public class Post {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer commentaireId;
+    private Integer postId;
+    private String nom;
     private String contenu;
     private Boolean status;
     private LocalDateTime dateCreation;
     private LocalDateTime dateModification;
-
     @ManyToOne
-    private Post post;
-    public Integer getCommentaireId() {
-        return commentaireId;
+    @JoinColumn(name = "categorieId")
+    private Categrorie categorie;
+    @OneToMany(mappedBy = "post")
+    private List<Commentaire> commentaires;
+
+    public Integer getPostId() {
+        return postId;
     }
 
-    public void setCommentaireId(Integer commentaireId) {
-        this.commentaireId = commentaireId;
+    public void setPostId(Integer postId) {
+        this.postId = postId;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public String getContenu() {
