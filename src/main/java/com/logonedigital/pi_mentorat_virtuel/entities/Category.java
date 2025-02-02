@@ -26,5 +26,6 @@ public class Category implements Serializable {
     private Integer idCategory;
     private Date updateAt;
     private Boolean etat;
+    @OneToMany (mappedBy = "category")
     private List<Ressource> ressources = new ArrayList<>();
 }

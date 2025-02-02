@@ -1,6 +1,6 @@
 package com.logonedigital.pi_mentorat_virtuel.Service.Category;
 
-import com.logonedigital.pi_mentorat_virtuel.Exception.RessourceNotFoundException;
+import com.logonedigital.pi_mentorat_virtuel.exception.RessourceNotFoundException;
 import com.logonedigital.pi_mentorat_virtuel.entities.Category;
 import com.logonedigital.pi_mentorat_virtuel.repository.CategoryRepo;
 import org.springframework.stereotype.Service;

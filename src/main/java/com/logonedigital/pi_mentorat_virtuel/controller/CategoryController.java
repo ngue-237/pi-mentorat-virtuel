@@ -1,4 +1,4 @@
-package com.logonedigital.pi_mentorat_virtuel.Controller;
+package com.logonedigital.pi_mentorat_virtuel.controller;
 
 import com.logonedigital.pi_mentorat_virtuel.Service.Category.CategoryServiceImpl;
 import com.logonedigital.pi_mentorat_virtuel.entities.Category;

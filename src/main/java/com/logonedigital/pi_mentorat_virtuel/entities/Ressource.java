@@ -1,11 +1,14 @@
 package com.logonedigital.pi_mentorat_virtuel.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.mapping.List;
+import org.hibernate.validator.constraints.Length;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -13,8 +16,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
 @Table(name = "ressources")
@@ -24,11 +25,15 @@ public class Ressource implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idRessource;
+    @NotEmpty(message = "Le champ description ne doit pas être vide")
+    @NotBlank(message = "il y a un problème avec le remplissage de ce champ")
+    @Length(min = 3, max = 30, message = "le nom doit contenir minimum 3 caractères et maximum 20 caractères")
     private String description;
     private Double prix;
     private Date creatAt;
     private Date UpdateAt;
     private Boolean etat;
+    @ManyToOne
     private Category category;
 
     public Ressource() {
