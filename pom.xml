@@ -26,6 +26,7 @@
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
+
 		<!-- springdoc dependency -->
 		<dependency>
 			<groupId>org.springdoc</groupId>

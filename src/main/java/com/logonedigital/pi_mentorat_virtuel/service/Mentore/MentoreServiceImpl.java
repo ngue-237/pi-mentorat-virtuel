@@ -38,7 +38,7 @@ public class MentoreServiceImpl implements MentoreService {
     @Override
     public MentoreRespDTO addMentore(@Valid MentoreReqDTO mentoreReqDTO) {
         Optional<Mentore> mentoreExist = this.mentoreRepo
-                .fetchByEmail(mentoreReqDTO.getEmail());
+                .fetchByEmail(mentoreReqDTO.email());
         if(mentoreExist.isPresent())
             throw new ResourceExistException("This email already exist !");
         //DTOS
@@ -46,12 +46,9 @@ public class MentoreServiceImpl implements MentoreService {
         mentore.setCreatedAt(new Date());
         mentore.setStatus(true);
         //LIAISON DES DONNES
-        LocationReqDTO locationReqDTO = mentoreReqDTO.getLocationReqDTO();
-        Location location= this.mentoreMapper.fromLocationReqDTO(locationReqDTO);
-        if (mentore.getLocation() != null && mentore.getLocation().getLocationId() == null) {
-            // Save location if not already saved
-            this.locationRepo.save(mentore.getLocation());
-        }
+        Location location= this.locationRepo
+                .findById(mentoreReqDTO.locationId())
+                        .orElseThrow(()-> new ResourceNotFoundException("Location not found"));
 
         mentore.setLocation(location);
 
