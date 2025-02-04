@@ -1,12 +1,17 @@
 package com.logonedigital.pi_mentorat_virtuel.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
-
-
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter @Setter
 @Entity
 @Table(name = "locations")
 public class Location implements Serializable {
@@ -24,19 +29,6 @@ public class Location implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date updatedAt;
     private Boolean status;
-
-    public Location() {
-    }
-
-    public Location(Integer locationId, String town, Integer postalCode, String street, Date createdAt, Date updatedAt, Boolean status) {
-        this.locationId = locationId;
-        this.town = town;
-        this.postalCode = postalCode;
-        this.street = street;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-        this.status = status;
-    }
 
     public Integer getLocationId() {
         return locationId;
