@@ -20,27 +20,37 @@ import java.util.Date;
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Integer mentorId;
         private String field;
-        @NotEmpty(message = "le nom est obligatoire")
-        @Column(nullable = false)
         private String nom;
         private String prenom;
-        @NotEmpty(message = "l'email est invalide")
-        @Column(nullable = false)
         private String email;
         private String bibliography;
-        @NotEmpty(message = "le niveau est obligatoire")
-        @Column(nullable = false)
         private String level;
         @Temporal(TemporalType.DATE)
         private Date createdAt;
         @Temporal(TemporalType.DATE)
         private Date updatedAt;
 
-        public @NotEmpty(message = "le nom est obligatoire") String getNom() {
+        public Integer getMentorId() {
+            return mentorId;
+        }
+
+        public void setMentorId(Integer mentorId) {
+            this.mentorId = mentorId;
+        }
+
+        public String getField() {
+            return field;
+        }
+
+        public void setField(String field) {
+            this.field = field;
+        }
+
+        public String getNom() {
             return nom;
         }
 
-        public void setNom(@NotEmpty(message = "le nom est obligatoire") String nom) {
+        public void setNom(String nom) {
             this.nom = nom;
         }
 
@@ -58,22 +68,6 @@ import java.util.Date;
 
         public void setEmail(String email) {
             this.email = email;
-        }
-
-        public Integer getMentorId() {
-            return mentorId;
-        }
-
-        public void setMentorId(Integer mentorId) {
-            this.mentorId = mentorId;
-        }
-
-        public String getField() {
-            return field;
-        }
-
-        public void setField(String field) {
-            this.field = field;
         }
 
         public String getBibliography() {
@@ -108,5 +102,6 @@ import java.util.Date;
             this.updatedAt = updatedAt;
         }
     }
+
 
 
