@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serial;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -16,6 +17,8 @@ import java.util.Date;
 @NoArgsConstructor
 @Table(name = "commentaire")
 public class Commentaire {
+    @Serial
+    private static final long serialVersionUID = 1L;
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer commentaireId;
     private String contenu;

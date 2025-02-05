@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +19,9 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 @Table(name = "categorie")
-public class Categrorie {
+public class Categrorie implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer categorieId;
     private String nom;

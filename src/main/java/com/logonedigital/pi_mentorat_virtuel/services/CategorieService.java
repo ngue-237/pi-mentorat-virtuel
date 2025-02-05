@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface CategorieService {
     Categrorie addCategorie(Categrorie categrorie);
     List<Categrorie> getAllCategorie();
-    Optional<Categrorie> getCategorieById(Integer categorieId);
+    Categrorie getCategorieById(Integer categorieId);
     Categrorie updateCategorie(Categrorie categrorie,Integer categorieId);
     void deleteCategorieById(Integer categorieId);
 }
