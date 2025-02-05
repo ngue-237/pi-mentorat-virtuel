@@ -26,6 +26,8 @@ public class Commentaire implements Serializable {
     @NotEmpty(message = "ce champ est obligatoire")
     private String contenu;
     private Boolean status;
+    private Boolean isApproved = false; // moderation automatique par default
+    private Boolean isInappropriateReported = false; // user peut signaler
     private LocalDateTime dateCreation;
     private LocalDateTime dateModification;
 
@@ -53,6 +55,30 @@ public class Commentaire implements Serializable {
 
     public void setStatus(Boolean status) {
         this.status = status;
+    }
+
+    public Boolean getApproved() {
+        return isApproved;
+    }
+
+    public void setApproved(Boolean approved) {
+        isApproved = approved;
+    }
+
+    public Boolean getInappropriateReported() {
+        return isInappropriateReported;
+    }
+
+    public void setInappropriateReported(Boolean inappropriateReported) {
+        isInappropriateReported = inappropriateReported;
+    }
+
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
     }
 
     public LocalDateTime getDateCreation() {

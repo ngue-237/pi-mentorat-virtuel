@@ -32,6 +32,32 @@ public class CommentaireServiceImpl implements CommentaireService{
     }
 
     @Override
+    public Commentaire approveCommentaire(Integer commentaireId) {
+        return null;
+    }
+
+    @Override
+    public Commentaire reportInappropriateCommentaire(Integer commentaireId) {
+        Optional<Commentaire> commentaireOptional = this.commentaireRepo.findById(commentaireId);
+        if (commentaireOptional.isEmpty())
+            throw new ResourceNotFoundException("comment not found!!");
+        Commentaire commentaire = commentaireOptional.get();
+        commentaire.setInappropriateReported(true);
+
+        return commentaireRepo.save(commentaire);
+    }
+
+    @Override
+    public List<Commentaire> getReportedComments() {
+        return this.commentaireRepo.findByIsInappropriateReportedTrue();
+    }
+
+    @Override
+    public List<Commentaire> getUnapprovedComments() {
+        return null;
+    }
+
+    @Override
     public Commentaire getCommentaireById(Integer commentaireId) {
 
         return this.commentaireRepo.findById(commentaireId)

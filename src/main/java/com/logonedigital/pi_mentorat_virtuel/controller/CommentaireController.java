@@ -32,6 +32,12 @@ public class CommentaireController {
         return ResponseEntity
                 .ok(this.commentaireService.addCommentaire(commentaire));
     }
+    @PostMapping(path = "commentaire/report/{commentaireId}")
+    @ResponseBody
+    public ResponseEntity<Commentaire> reportInappropriateCommentaire(@PathVariable Integer commentaireId){
+        Commentaire updatedCommentaire = commentaireService.reportInappropriateCommentaire(commentaireId);
+        return ResponseEntity.ok(commentaireService.approveCommentaire(commentaireId));
+    }
     @Operation(
             summary = "Récupérer la liste de tous les commentaires",
             description = "Cette méthode permet de récupérer tous les commentaires présents dans la base de données."
@@ -43,6 +49,11 @@ public class CommentaireController {
     public ResponseEntity<List<Commentaire>> getAllCommentaire(){
         return ResponseEntity
                 .ok(this.commentaireService.getAllCommentaire());
+    }
+    @GetMapping(path = "commentaire/reported")
+    public ResponseEntity<List<Commentaire>> getReportedCommentaire(){
+        List<Commentaire> reportedCommentaire = commentaireService.getReportedComments();
+        return ResponseEntity.ok(this.commentaireService.getReportedComments());
     }
     @Operation(
             summary = "Récupérer un commentaire par son identifiant",
