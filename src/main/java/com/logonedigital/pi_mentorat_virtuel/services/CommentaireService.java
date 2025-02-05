@@ -10,7 +10,7 @@ public interface CommentaireService {
     Commentaire addCommentaire(Commentaire commentaire);
     List<Commentaire> getAllCommentaire();
     Commentaire getCommentaireById(Integer commentaireId);
-    Commentaire updateCommentaire(Commentaire commentaire,Integer commentaireId);
+    Commentaire updateCommentaireById(Commentaire commentaire,Integer commentaireId);
     void deleteCommentaireById(Integer commentaireId);
 
 }

@@ -6,6 +6,7 @@ import com.logonedigital.pi_mentorat_virtuel.services.CategorieService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,7 +30,7 @@ public class CategorieController {
     })
     @PostMapping(path = "categorie/add")
     @ResponseBody
-    public ResponseEntity<Categrorie> addCategorie(@RequestBody Categrorie categrorie){
+    public ResponseEntity<Categrorie> addCategorie(@Valid @RequestBody Categrorie categrorie){
         return ResponseEntity
                 .ok(this.categorieService.addCategorie(categrorie));
     }
@@ -68,7 +69,7 @@ public class CategorieController {
             @ApiResponse(responseCode = "400", description = "Les données envoyées sont invalides ou incomplètes.")
     })
     @PutMapping(path = "categorie/update-categorie-by-id/{categorieId}")
-    public ResponseEntity<Categrorie> updateCategorieById(@RequestBody Categrorie categrorie,@PathVariable Integer categorieId){
+    public ResponseEntity<Categrorie> updateCategorieById(@Valid @RequestBody Categrorie categrorie,@PathVariable Integer categorieId){
         return ResponseEntity
                 .ok(this.categorieService.updateCategorie(categrorie, categorieId));
     }

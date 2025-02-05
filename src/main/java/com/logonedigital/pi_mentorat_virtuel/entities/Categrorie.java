@@ -1,10 +1,12 @@
 package com.logonedigital.pi_mentorat_virtuel.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Length;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -24,6 +26,8 @@ public class Categrorie implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer categorieId;
+    @NotEmpty(message = "ce champ est obligatoire")
+    @Length(min = 3,message = "ce champ doit contenir au moins 3 caractere")
     private String nom;
     private String description;
     private Boolean status;
