@@ -32,6 +32,14 @@ public class CommentaireController {
         return ResponseEntity
                 .ok(this.commentaireService.addCommentaire(commentaire));
     }
+    @Operation(
+            summary = "Ajouter un nouveau commentaire comme inapproprie ",
+            description = "Cette méthode permet de signaler un commentaire comme inapproprie dans la base de données."
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Commentaire ajoutée avec succès"),
+            @ApiResponse(responseCode = "400", description = "Les données envoyées sont invalides")
+    })
     @PostMapping(path = "commentaire/report/{commentaireId}")
     @ResponseBody
     public ResponseEntity<Commentaire> reportInappropriateCommentaire(@PathVariable Integer commentaireId){
@@ -39,6 +47,7 @@ public class CommentaireController {
         return ResponseEntity.ok(commentaireService.approveCommentaire(commentaireId));
     }
     @Operation(
+
             summary = "Récupérer la liste de tous les commentaires",
             description = "Cette méthode permet de récupérer tous les commentaires présents dans la base de données."
     )
@@ -50,6 +59,14 @@ public class CommentaireController {
         return ResponseEntity
                 .ok(this.commentaireService.getAllCommentaire());
     }
+    @Operation(
+
+            summary = "Récupérer la liste de tous les commentaires inapproprie",
+            description = "Cette méthode permet de récupérer tous les commentaires inappropries présents dans la base de données."
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "La liste de tous les commentaires a été récupérée avec succès.")
+    })
     @GetMapping(path = "commentaire/reported")
     public ResponseEntity<List<Commentaire>> getReportedCommentaire(){
         List<Commentaire> reportedCommentaire = commentaireService.getReportedComments();
