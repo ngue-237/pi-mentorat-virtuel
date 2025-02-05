@@ -1,6 +1,7 @@
 package com.logonedigital.pi_mentorat_virtuel.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,6 +23,7 @@ public class Commentaire implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer commentaireId;
+    @NotEmpty(message = "ce champ est obligatoire")
     private String contenu;
     private Boolean status;
     private LocalDateTime dateCreation;

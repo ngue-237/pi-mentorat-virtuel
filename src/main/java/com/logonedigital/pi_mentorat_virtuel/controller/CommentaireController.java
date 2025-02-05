@@ -5,6 +5,7 @@ import com.logonedigital.pi_mentorat_virtuel.services.CommentaireService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +28,7 @@ public class CommentaireController {
     })
     @PostMapping(path = "commentaire/add")
     @ResponseBody
-    public ResponseEntity<Commentaire> addCommentaire(@RequestBody Commentaire commentaire){
+    public ResponseEntity<Commentaire> addCommentaire(@Valid @RequestBody Commentaire commentaire){
         return ResponseEntity
                 .ok(this.commentaireService.addCommentaire(commentaire));
     }
@@ -65,7 +66,7 @@ public class CommentaireController {
             @ApiResponse(responseCode = "400", description = "Les données envoyées sont invalides ou incomplètes.")
     })
     @PutMapping(path = "commentaire/update-commentaire-by-id/{commentaireId}")
-    public ResponseEntity<Commentaire> updateCommentaireById(@RequestBody Commentaire commentaire,@PathVariable Integer commentaireId){
+    public ResponseEntity<Commentaire> updateCommentaireById(@Valid @RequestBody Commentaire commentaire,@PathVariable Integer commentaireId){
         return ResponseEntity
                 .ok(this.commentaireService.updateCommentaireById(commentaire, commentaireId));
     }
