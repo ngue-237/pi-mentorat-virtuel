@@ -5,6 +5,7 @@ import com.logonedigital.pi_mentorat_virtuel.services.PostService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +28,7 @@ public class PostController {
     })
     @PostMapping(path = "post/add")
     @ResponseBody
-    public ResponseEntity<Post> addPost(@RequestBody Post post){
+    public ResponseEntity<Post> addPost(@Valid @RequestBody Post post){
         return ResponseEntity
                 .ok(this.postService.addPost(post));
     }
@@ -65,7 +66,7 @@ public class PostController {
             @ApiResponse(responseCode = "400", description = "Les données envoyées sont invalides ou incomplètes.")
     })
     @PutMapping(path = "post/update-post-by-id/{postId}")
-    public ResponseEntity<Post> updatePostById(@RequestBody Post post,@PathVariable Integer postId){
+    public ResponseEntity<Post> updatePostById(@Valid @RequestBody Post post, @PathVariable Integer postId){
         return ResponseEntity
                 .ok(this.postService.updatePostById(post, postId));
     }

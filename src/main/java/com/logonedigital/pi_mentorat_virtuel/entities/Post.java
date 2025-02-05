@@ -1,6 +1,7 @@
 package com.logonedigital.pi_mentorat_virtuel.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +19,9 @@ import java.util.List;
 public class Post {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer postId;
+    @NotEmpty(message = "ce champ est obligatoire")
     private String nom;
+    @NotEmpty(message = "ce champ est obligatoire")
     private String contenu;
     private Boolean status;
     private LocalDateTime dateCreation;
