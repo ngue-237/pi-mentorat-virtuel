@@ -48,9 +48,11 @@ public class MentoreServiceImpl implements MentoreService {
         //LIAISON DES DONNES
         Location location= this.locationRepo
                 .findById(mentoreReqDTO.locationId())
-                        .orElseThrow(()-> new ResourceNotFoundException("Location not found"));
+                .orElseThrow(()-> new ResourceNotFoundException("Location not found"));
 
         mentore.setLocation(location);
+
+        
 
         return this.mentoreMapper.fromMentore(this.mentoreRepo.save(mentore)) ;
 
