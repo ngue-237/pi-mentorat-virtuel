@@ -5,6 +5,9 @@ import com.logonedigital.pi_mentorat_virtuel.Exception.ResourceNotFoundException
 import com.logonedigital.pi_mentorat_virtuel.entities.Commentaire;
 import com.logonedigital.pi_mentorat_virtuel.repository.CommentaireRepo;
 import com.sun.source.tree.OpensTree;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -32,8 +35,10 @@ public class CommentaireServiceImpl implements CommentaireService{
     }
 
     @Override
-    public Commentaire approveCommentaire(Integer commentaireId) {
-        return null;
+    public Page<Commentaire> getsCommentaire(int pageNumber, int pageSize) {
+
+        Pageable pageable = PageRequest.of(pageNumber, pageSize);
+        return this.commentaireRepo.findAll(pageable);
     }
 
     @Override
@@ -50,11 +55,6 @@ public class CommentaireServiceImpl implements CommentaireService{
     @Override
     public List<Commentaire> getReportedComments() {
         return this.commentaireRepo.findByIsInappropriateReportedTrue();
-    }
-
-    @Override
-    public List<Commentaire> getUnapprovedComments() {
-        return null;
     }
 
     @Override

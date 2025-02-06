@@ -14,5 +14,4 @@ import java.util.Optional;
 @Repository
 public interface CategorieRepo extends JpaRepository<Categrorie, Integer> {
 
-
 }

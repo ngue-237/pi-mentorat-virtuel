@@ -4,6 +4,9 @@ import com.logonedigital.pi_mentorat_virtuel.Exception.ResourceExistException;
 import com.logonedigital.pi_mentorat_virtuel.Exception.ResourceNotFoundException;
 import com.logonedigital.pi_mentorat_virtuel.entities.Post;
 import com.logonedigital.pi_mentorat_virtuel.repository.PostRepo;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -27,6 +30,21 @@ public class PostServiceImpl implements PostService{
     @Override
     public List<Post> getAllPost() {
         return this.postRepo.findAll();
+    }
+
+    @Override
+    public Post getPostByNom(String nom) {
+
+        Optional<Post> post = this.postRepo.findPostByNom(nom);
+        if (post.isEmpty())
+            throw new ResourceNotFoundException("le post avec ce nom n'existe!!");
+        return post.get();
+    }
+
+    @Override
+    public Page<Post> getsPost(int pageNumber, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNumber, pageSize);
+        return this.postRepo.findAll(pageable);
     }
 
     @Override

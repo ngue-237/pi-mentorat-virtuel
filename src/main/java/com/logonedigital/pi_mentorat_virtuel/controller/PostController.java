@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,6 +44,24 @@ public class PostController {
     public ResponseEntity<List<Post>> getAllPost(){
         return ResponseEntity
                 .ok(this.postService.getAllPost());
+    }
+    @GetMapping(path = "post/pagination/{pageNumber}/{pageSize}")
+    public ResponseEntity<Page<Post>> pagination(@PathVariable int pageNumber,@PathVariable int pageSize){
+        return ResponseEntity
+                .ok(this.postService.getsPost(pageNumber, pageSize));
+    }
+    @Operation(
+            summary = "Récupérer une catégorie par son nom",
+            description = "Cette méthode permet de récupérer une catégorie spécifique en utilisant son nom unique."
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "La catégorie a été récupérée avec succès."),
+            @ApiResponse(responseCode = "404", description = "Catégorie non trouvée pour le nom donné.")
+    })
+    @GetMapping(path = "post/get-post-by-nom/{nom}")
+    public ResponseEntity<Post> getPostByNom(@PathVariable String nom){
+        return ResponseEntity
+                .ok(this.postService.getPostByNom(nom));
     }
     @Operation(
             summary = "Récupérer une catégorie par son identifiant",

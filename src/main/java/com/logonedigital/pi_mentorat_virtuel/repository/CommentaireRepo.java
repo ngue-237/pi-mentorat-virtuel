@@ -8,7 +8,6 @@ import java.util.List;
 
 @Repository
 public interface CommentaireRepo extends JpaRepository<Commentaire, Integer> {
-    List<Commentaire> findByIsApproved(boolean isApproved);  // Récupérer les commentaires approuvés ou non
     List<Commentaire> findByIsInappropriateReportedTrue();  // Récupérer les commentaires signalés comme inappropriés
 
 }

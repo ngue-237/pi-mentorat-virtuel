@@ -6,7 +6,10 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,23 +31,29 @@ public class CommentaireController {
     })
     @PostMapping(path = "commentaire/add")
     @ResponseBody
+    @MessageMapping("/commentaire")
+    @SendTo("/topic/commentaire")
     public ResponseEntity<Commentaire> addCommentaire(@Valid @RequestBody Commentaire commentaire){
         return ResponseEntity
                 .ok(this.commentaireService.addCommentaire(commentaire));
     }
     @Operation(
-            summary = "Ajouter un nouveau commentaire comme inapproprie ",
-            description = "Cette méthode permet de signaler un commentaire comme inapproprie dans la base de données."
+            summary = "recuperer un commentaire inapproprie ",
+            description = "Cette méthode permet recuperer commentaire comme inapproprie dans la base de données."
     )
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Commentaire ajoutée avec succès"),
+            @ApiResponse(responseCode = "201", description = "Commentaire recuperer avec succès"),
             @ApiResponse(responseCode = "400", description = "Les données envoyées sont invalides")
     })
-    @PostMapping(path = "commentaire/report/{commentaireId}")
-    @ResponseBody
+    @GetMapping(path = "commentaire/report/{commentaireId}")
     public ResponseEntity<Commentaire> reportInappropriateCommentaire(@PathVariable Integer commentaireId){
         Commentaire updatedCommentaire = commentaireService.reportInappropriateCommentaire(commentaireId);
-        return ResponseEntity.ok(commentaireService.approveCommentaire(commentaireId));
+        return ResponseEntity.ok(commentaireService.reportInappropriateCommentaire(commentaireId));
+    }
+    @GetMapping(path = "commentaire/pagination/{pageNumber}/{pageSize}")
+    public ResponseEntity<Page<Commentaire>> Pagination(@PathVariable int pageNumber,@PathVariable int pageSize){
+        return ResponseEntity
+                .ok(this.commentaireService.getsCommentaire(pageNumber, pageSize));
     }
     @Operation(
 
@@ -67,6 +76,8 @@ public class CommentaireController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "La liste de tous les commentaires a été récupérée avec succès.")
     })
+    @MessageMapping("/reported")
+    @SendTo("/topic/commentaire")
     @GetMapping(path = "commentaire/reported")
     public ResponseEntity<List<Commentaire>> getReportedCommentaire(){
         List<Commentaire> reportedCommentaire = commentaireService.getReportedComments();

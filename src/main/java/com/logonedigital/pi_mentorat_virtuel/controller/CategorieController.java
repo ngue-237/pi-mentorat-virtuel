@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,6 +46,11 @@ public class CategorieController {
     public ResponseEntity<List<Categrorie>> getAllCategorie(){
         return ResponseEntity
                 .ok(this.categorieService.getAllCategorie());
+    }
+    @GetMapping(path = "categorie/pagination/{page}/{size}")
+    public ResponseEntity<Page<Categrorie>> pagination(@PathVariable int page,@PathVariable int size){
+        return ResponseEntity
+                .ok(this.categorieService.getsPost(page, size));
     }
 
     @Operation(

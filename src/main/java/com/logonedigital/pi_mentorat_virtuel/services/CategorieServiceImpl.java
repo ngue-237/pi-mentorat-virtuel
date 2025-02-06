@@ -4,6 +4,9 @@ import com.logonedigital.pi_mentorat_virtuel.Exception.ResourceExistException;
 import com.logonedigital.pi_mentorat_virtuel.Exception.ResourceNotFoundException;
 import com.logonedigital.pi_mentorat_virtuel.entities.Categrorie;
 import com.logonedigital.pi_mentorat_virtuel.repository.CategorieRepo;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -30,11 +33,16 @@ public class CategorieServiceImpl implements CategorieService{
     }
 
     @Override
+    public Page<Categrorie> getsPost(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return this.categorieRepo.findAll(pageable);
+    }
+
+    @Override
     public Categrorie getCategorieById(Integer categorieId) {
       return this.categorieRepo.findById(categorieId).
               orElseThrow(()->new ResourceExistException("category isn't exist!!"));
     }
-
     @Override
     public Categrorie updateCategorie(Categrorie categrorie, Integer categorieId) {
 
