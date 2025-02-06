@@ -1,9 +1,13 @@
 package com.logonedigital.pi_mentorat_virtuel.dto;
 
-public record MentoreRespDTO( String firstname,
-                              String lastname,
-                              String phone,
-                              String email,
-                              Boolean status,
-                              LocationRespDTO locationRespDTO) {
+import lombok.Data;
+
+@Data
+public class MentoreRespDTO {
+    private String firstname;
+    private String lastname;
+    private String phone;
+    private String email;
+    private Boolean status;
+    private LocationRespDTO locationRespDTO;
 }
