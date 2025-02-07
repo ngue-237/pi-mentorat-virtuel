@@ -1,5 +1,7 @@
 package com.logonedigital.pi_mentorat_virtuel.controller;
 
+import com.logonedigital.pi_mentorat_virtuel.dto.CategorieReqDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.CategorieRespDTO;
 import com.logonedigital.pi_mentorat_virtuel.entities.Categrorie;
 import com.logonedigital.pi_mentorat_virtuel.entities.Commentaire;
 import com.logonedigital.pi_mentorat_virtuel.services.CategorieService;
@@ -8,6 +10,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,9 +34,11 @@ public class CategorieController {
     })
     @PostMapping(path = "categorie/add")
     @ResponseBody
-    public ResponseEntity<Categrorie> addCategorie(@Valid @RequestBody Categrorie categrorie){
-        return ResponseEntity
-                .ok(this.categorieService.addCategorie(categrorie));
+    public ResponseEntity<CategorieRespDTO> addCategorie(@Valid @RequestBody CategorieReqDTO categorieReqDTO){
+
+        CategorieRespDTO addCategorie = categorieService.addCategorie(categorieReqDTO);
+        return new ResponseEntity<>(addCategorie, HttpStatus.CREATED);
+
     }
     @Operation(
             summary = "Recuperer la liste des categories",

@@ -21,6 +21,7 @@ public class Post {
     private Integer postId;
     @NotEmpty(message = "ce champ est obligatoire")
     private String nom;
+    private  String author;
     @NotEmpty(message = "ce champ est obligatoire")
     private String contenu;
     private Boolean status;

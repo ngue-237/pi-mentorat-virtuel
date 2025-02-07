@@ -2,6 +2,9 @@ package com.logonedigital.pi_mentorat_virtuel.services;
 
 import com.logonedigital.pi_mentorat_virtuel.Exception.ResourceExistException;
 import com.logonedigital.pi_mentorat_virtuel.Exception.ResourceNotFoundException;
+import com.logonedigital.pi_mentorat_virtuel.Mapper.CategorieMapper;
+import com.logonedigital.pi_mentorat_virtuel.dto.CategorieReqDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.CategorieRespDTO;
 import com.logonedigital.pi_mentorat_virtuel.entities.Categrorie;
 import com.logonedigital.pi_mentorat_virtuel.repository.CategorieRepo;
 import org.springframework.data.domain.Page;
@@ -16,15 +19,21 @@ import java.util.Optional;
 @Service
 public class CategorieServiceImpl implements CategorieService{
     private final CategorieRepo categorieRepo;
+    private final CategorieMapper categorieMapper;
 
-    public CategorieServiceImpl(CategorieRepo categorieRepo) {
+    public CategorieServiceImpl(CategorieRepo categorieRepo, CategorieMapper categorieMapper) {
         this.categorieRepo = categorieRepo;
+        this.categorieMapper = categorieMapper;
     }
 
-    @Override
-    public Categrorie addCategorie(Categrorie categrorie) {
 
-        return this.categorieRepo.save(categrorie);
+    @Override
+    public CategorieRespDTO addCategorie(CategorieReqDTO categorieReqDTO) {
+        Categrorie categrorie = categorieMapper.toEntity(categorieReqDTO);
+
+        Categrorie addCategorie = categorieRepo.save(categrorie);
+
+        return categorieMapper.toDto(addCategorie);
     }
 
     @Override
