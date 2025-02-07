@@ -2,9 +2,11 @@ package com.logonedigital.pi_mentorat_virtuel.services;
 
 import com.logonedigital.pi_mentorat_virtuel.Exception.ResourceExistException;
 import com.logonedigital.pi_mentorat_virtuel.Exception.ResourceNotFoundException;
+import com.logonedigital.pi_mentorat_virtuel.Mapper.CommentaireMapper;
+import com.logonedigital.pi_mentorat_virtuel.dto.CommentaireReqDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.CommentaireRespDTO;
 import com.logonedigital.pi_mentorat_virtuel.entities.Commentaire;
 import com.logonedigital.pi_mentorat_virtuel.repository.CommentaireRepo;
-import com.sun.source.tree.OpensTree;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -17,15 +19,21 @@ import java.util.Optional;
 @Service
 public class CommentaireServiceImpl implements CommentaireService{
     private final CommentaireRepo commentaireRepo;
+    private final CommentaireMapper commentaireMapper;
 
-    public CommentaireServiceImpl(CommentaireRepo commentaireRepo) {
+    public CommentaireServiceImpl(CommentaireRepo commentaireRepo, CommentaireMapper commentaireMapper) {
         this.commentaireRepo = commentaireRepo;
+        this.commentaireMapper = commentaireMapper;
     }
 
-    @Override
-    public Commentaire addCommentaire(Commentaire commentaire) {
 
-        return this.commentaireRepo.save(commentaire);
+    @Override
+    public CommentaireRespDTO addCommentaire(CommentaireReqDTO commentaireReqDTO) {
+        Commentaire commentaire = commentaireMapper.toEntity(commentaireReqDTO);
+
+        Commentaire addCommentaire = commentaireRepo.save(commentaire);
+
+        return commentaireMapper.toDto(addCommentaire);
     }
 
     @Override

@@ -1,5 +1,8 @@
 package com.logonedigital.pi_mentorat_virtuel.controller;
 
+import com.logonedigital.pi_mentorat_virtuel.dto.CategorieRespDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.CommentaireReqDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.CommentaireRespDTO;
 import com.logonedigital.pi_mentorat_virtuel.entities.Commentaire;
 import com.logonedigital.pi_mentorat_virtuel.services.CommentaireService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -7,6 +10,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -33,9 +37,10 @@ public class CommentaireController {
     @ResponseBody
     @MessageMapping("/commentaire")
     @SendTo("/topic/commentaire")
-    public ResponseEntity<Commentaire> addCommentaire(@Valid @RequestBody Commentaire commentaire){
-        return ResponseEntity
-                .ok(this.commentaireService.addCommentaire(commentaire));
+    public ResponseEntity<CommentaireRespDTO> addCommentaire(@Valid @RequestBody CommentaireReqDTO commentaireReqDTO){
+
+        CommentaireRespDTO addCommentaire = commentaireService.addCommentaire(commentaireReqDTO);
+        return new ResponseEntity<>(addCommentaire, HttpStatus.CREATED);
     }
     @Operation(
             summary = "recuperer un commentaire inapproprie ",

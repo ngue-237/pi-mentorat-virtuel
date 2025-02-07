@@ -27,7 +27,7 @@ public class Commentaire implements Serializable {
     private String contenu;
     private Boolean status;
     private Boolean isApproved = false; // moderation automatique par default
-    private Boolean isInappropriateReported = false; // user peut signaler
+    private Boolean isInappropriateReported = false; // utisalisateur peut signaler
     private LocalDateTime dateCreation;
     private LocalDateTime dateModification;
 
