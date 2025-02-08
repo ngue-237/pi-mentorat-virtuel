@@ -1,36 +1,17 @@
-package com.logonedigital.pi_mentorat_virtuel.entities;
+package com.logonedigital.pi_mentorat_virtuel.dto;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotEmpty;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@Entity
-@Table(name = "post")
-public class Post {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+@Data
+public class PostRespDTO {
     private Integer postId;
-    @NotEmpty(message = "ce champ est obligatoire")
     private String nom;
-    @NotEmpty(message = "ce champ est obligatoire")
     private String contenu;
     private Boolean status;
     private LocalDateTime dateCreation;
     private LocalDateTime dateModification;
-    @ManyToOne
-    @JoinColumn(name = "categorieId")
-    private Categrorie categorie;
-    @OneToMany(mappedBy = "post")
-    private List<Commentaire> commentaires;
 
     public Integer getPostId() {
         return postId;

@@ -2,6 +2,9 @@ package com.logonedigital.pi_mentorat_virtuel.services;
 
 import com.logonedigital.pi_mentorat_virtuel.Exception.ResourceExistException;
 import com.logonedigital.pi_mentorat_virtuel.Exception.ResourceNotFoundException;
+import com.logonedigital.pi_mentorat_virtuel.Mapper.PostMapper;
+import com.logonedigital.pi_mentorat_virtuel.dto.PostReqDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.PostRespDTO;
 import com.logonedigital.pi_mentorat_virtuel.entities.Post;
 import com.logonedigital.pi_mentorat_virtuel.repository.PostRepo;
 import org.springframework.data.domain.Page;
@@ -16,15 +19,22 @@ import java.util.Optional;
 @Service
 public class PostServiceImpl implements PostService{
     private final PostRepo postRepo;
+    private final PostMapper postMapper;
 
-    public PostServiceImpl(PostRepo postRepo) {
+    public PostServiceImpl(PostRepo postRepo, PostMapper postMapper) {
         this.postRepo = postRepo;
+        this.postMapper = postMapper;
     }
 
-    @Override
-    public Post addPost(Post post) {
 
-        return this.postRepo.save(post);
+    @Override
+    public PostRespDTO addPost(PostReqDTO postReqDTO) {
+
+        Post post = postMapper.toEntity(postReqDTO);
+
+        Post addPost = postRepo.save(post);
+
+        return postMapper.toDto(addPost);
     }
 
     @Override
