@@ -1,13 +1,19 @@
 package com.logonedigital.pi_mentorat_virtuel.coltroller;
 
+import ch.qos.logback.core.model.Model;
+import com.logonedigital.pi_mentorat_virtuel.dto.RdvReqDto;
+import com.logonedigital.pi_mentorat_virtuel.dto.RdvResDto;
 import com.logonedigital.pi_mentorat_virtuel.entities.RDV;
+import com.logonedigital.pi_mentorat_virtuel.repositories.RdvRepo;
 import com.logonedigital.pi_mentorat_virtuel.service.Rdv.RdvService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import static org.antlr.v4.runtime.tree.xpath.XPath.findAll;
 
 @RestController
 public class RdvController {
@@ -17,14 +23,30 @@ public class RdvController {
         this.rdvService = rdvService;
     }
     @PostMapping(path = "rdv/add")
-    public ResponseEntity<RDV> addrdv(@Valid @RequestBody RDV rdv){
+    public ResponseEntity<RdvResDto> addRDV(@Valid @RequestBody RdvReqDto rdvReqDto){
         return  ResponseEntity
-                .ok(this.rdvService.addRdv(rdv));
+                .ok(this.rdvService.addRdv(rdvReqDto));
     }
     @GetMapping(path = "rdv/get_all")
-    public ResponseEntity<List<RDV>> getAllRDV(){
+    public String getAllRDV(@RequestParam(defaultValue = "0") int page,  // Page par défaut
+                                               @RequestParam(defaultValue = "5") int size, // Taille de la page par défaut
+                                               @RequestParam(defaultValue = "debutDuRDV") String sort,  // Critère de tri par défaut
+                                               @RequestParam(defaultValue = "asc") String dir,    // Direction du tri par défaut
+                                               Model model) {
 
-        return (ResponseEntity<List<RDV>>) this.rdvService.getall();
+
+        Sort.Direction sortDirection = dir.equalsIgnoreCase("asc") ? Sort.Direction.ASC : Sort.Direction.DESC;
+        Sort sortObj = Sort.by(sortDirection, sort);
+
+        // Créer un objet Pageable pour la pagination et le tri
+        PageRequest pageable = PageRequest.of(page, size, sortObj);
+
+
+
+
+        // Ajouter les résultats et les informations de pagination au modèle
+
+        return "rendezvous/liste";
     }
 
     @GetMapping(path = "rdv/get_by_id/{rdvId}")

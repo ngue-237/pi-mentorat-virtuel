@@ -15,4 +15,20 @@ public class FeedBack {
     private String commentaire;
     @ManyToOne
     private RDV rdv;
+
+    public @NotEmpty(message = "this field must not be left empty") String getCommentaire() {
+        return commentaire;
+    }
+
+    public void setCommentaire(@NotEmpty(message = "this field must not be left empty") String commentaire) {
+        this.commentaire = commentaire;
+    }
+
+    public Integer getNote() {
+        return note;
+    }
+
+    public void setNote(Integer note) {
+        this.note = note;
+    }
 }

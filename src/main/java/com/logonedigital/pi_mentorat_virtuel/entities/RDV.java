@@ -20,8 +20,47 @@ public class RDV {
     private Timestamp debutduRDV;
     private String duree;
     private String visioconference;
+private String etat;
+    public String getEtat() {
+        return etat;
+    }
 
-    private String etat;
+    public void setEtat(String etat) {
+        this.etat = etat;
+    }
+
+    public String getVisioconference() {
+        return visioconference;
+    }
+
+    public void setVisioconference(String visioconference) {
+        this.visioconference = visioconference;
+    }
+
+    public Timestamp getDebutduRDV() {
+        return debutduRDV;
+    }
+
+    public void setDebutduRDV(Timestamp debutduRDV) {
+        this.debutduRDV = debutduRDV;
+    }
+
+    public String getDuree() {
+        return duree;
+    }
+
+    public void setDuree(String duree) {
+        this.duree = duree;
+    }
+
+    public List<FeedBack> getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(List<FeedBack> feedback) {
+        this.feedback = feedback;
+    }
+
     @OneToOne
     private Thematique thematique;
     @OneToMany(mappedBy = "rdv")
