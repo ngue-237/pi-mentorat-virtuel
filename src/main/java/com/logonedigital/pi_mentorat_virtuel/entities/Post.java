@@ -7,38 +7,45 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.io.Serial;
-import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Date;
+import java.util.List;
 
-@Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "commentaire")
-public class Commentaire implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 1L;
+@Entity
+@Table(name = "post")
+public class Post {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer commentaireId;
+    private Integer postId;
+    @NotEmpty(message = "ce champ est obligatoire")
+    private String nom;
     @NotEmpty(message = "ce champ est obligatoire")
     private String contenu;
     private Boolean status;
-    private Boolean isApproved = false; // moderation automatique par default
-    private Boolean isInappropriateReported = false; // utisalisateur peut signaler
     private LocalDateTime dateCreation;
     private LocalDateTime dateModification;
-
     @ManyToOne
-    private Post post;
-    public Integer getCommentaireId() {
-        return commentaireId;
+    @JoinColumn(name = "categorieId")
+    private Categrorie categorie;
+    @OneToMany(mappedBy = "post")
+    private List<Commentaire> commentaires;
+
+    public Integer getPostId() {
+        return postId;
     }
 
-    public void setCommentaireId(Integer commentaireId) {
-        this.commentaireId = commentaireId;
+    public void setPostId(Integer postId) {
+        this.postId = postId;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public String getContenu() {
@@ -55,30 +62,6 @@ public class Commentaire implements Serializable {
 
     public void setStatus(Boolean status) {
         this.status = status;
-    }
-
-    public Boolean getApproved() {
-        return isApproved;
-    }
-
-    public void setApproved(Boolean approved) {
-        isApproved = approved;
-    }
-
-    public Boolean getInappropriateReported() {
-        return isInappropriateReported;
-    }
-
-    public void setInappropriateReported(Boolean inappropriateReported) {
-        isInappropriateReported = inappropriateReported;
-    }
-
-    public Post getPost() {
-        return post;
-    }
-
-    public void setPost(Post post) {
-        this.post = post;
     }
 
     public LocalDateTime getDateCreation() {
