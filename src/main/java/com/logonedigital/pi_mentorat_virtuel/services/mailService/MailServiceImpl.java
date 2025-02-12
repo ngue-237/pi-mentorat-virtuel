@@ -1,4 +1,4 @@
-package com.logonedigital.pi_mentorat_virtuel.service.mailService;
+package com.logonedigital.pi_mentorat_virtuel.services.mailService;
 
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;

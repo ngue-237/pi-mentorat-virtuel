@@ -3,7 +3,7 @@ package com.logonedigital.pi_mentorat_virtuel.controller;
 import com.logonedigital.pi_mentorat_virtuel.dto.LocationReqDTO;
 import com.logonedigital.pi_mentorat_virtuel.dto.LocationRespDTO;
 import com.logonedigital.pi_mentorat_virtuel.entities.Location;
-import com.logonedigital.pi_mentorat_virtuel.service.Location.LocationService;
+import com.logonedigital.pi_mentorat_virtuel.services.Location.LocationService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;

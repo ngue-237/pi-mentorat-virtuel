@@ -1,16 +1,15 @@
-package com.logonedigital.pi_mentorat_virtuel.service.Mentore;
+package com.logonedigital.pi_mentorat_virtuel.services.Mentore;
 
-import com.logonedigital.pi_mentorat_virtuel.Exception.ResourceExistException;
-import com.logonedigital.pi_mentorat_virtuel.Exception.ResourceNotFoundException;
-import com.logonedigital.pi_mentorat_virtuel.Mapper.MentoreMapper;
-import com.logonedigital.pi_mentorat_virtuel.dto.LocationReqDTO;
+import com.logonedigital.pi_mentorat_virtuel.exception.ResourceExistException;
+import com.logonedigital.pi_mentorat_virtuel.exception.ResourceNotFoundException;
+import com.logonedigital.pi_mentorat_virtuel.mapper.MentoreMapper;
 import com.logonedigital.pi_mentorat_virtuel.dto.MentoreReqDTO;
 import com.logonedigital.pi_mentorat_virtuel.dto.MentoreRespDTO;
 import com.logonedigital.pi_mentorat_virtuel.entities.Location;
 import com.logonedigital.pi_mentorat_virtuel.entities.Mentore;
 import com.logonedigital.pi_mentorat_virtuel.repositories.LocationRepo;
 import com.logonedigital.pi_mentorat_virtuel.repositories.MentoreRepo;
-import com.logonedigital.pi_mentorat_virtuel.service.Location.LocationService;
+import com.logonedigital.pi_mentorat_virtuel.services.Location.LocationService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
