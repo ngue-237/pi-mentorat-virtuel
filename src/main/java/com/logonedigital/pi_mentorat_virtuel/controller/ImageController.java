@@ -2,7 +2,7 @@ package com.logonedigital.pi_mentorat_virtuel.controller;
 
 
 import com.logonedigital.pi_mentorat_virtuel.entities.ImageEntity;
-import com.logonedigital.pi_mentorat_virtuel.service.fonctionnaliteavance.ImageServiceImpl;
+import com.logonedigital.pi_mentorat_virtuel.services.fonctionnaliteavance.ImageServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;

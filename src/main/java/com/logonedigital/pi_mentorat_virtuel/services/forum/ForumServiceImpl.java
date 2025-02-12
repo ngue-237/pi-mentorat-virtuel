@@ -1,4 +1,4 @@
-package com.logonedigital.pi_mentorat_virtuel.service.forum;
+package com.logonedigital.pi_mentorat_virtuel.services.forum;
 
 import com.github.slugify.Slugify;
 import com.logonedigital.pi_mentorat_virtuel.entities.Forum;

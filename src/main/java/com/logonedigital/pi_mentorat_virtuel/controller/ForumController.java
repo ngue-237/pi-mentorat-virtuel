@@ -1,7 +1,7 @@
 package com.logonedigital.pi_mentorat_virtuel.controller;
 
 import com.logonedigital.pi_mentorat_virtuel.entities.Forum;
-import com.logonedigital.pi_mentorat_virtuel.service.forum.ForumService;
+import com.logonedigital.pi_mentorat_virtuel.services.forum.ForumService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;

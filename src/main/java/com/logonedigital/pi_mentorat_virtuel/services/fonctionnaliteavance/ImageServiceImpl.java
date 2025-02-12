@@ -1,4 +1,4 @@
-package com.logonedigital.pi_mentorat_virtuel.service.fonctionnaliteavance;
+package com.logonedigital.pi_mentorat_virtuel.services.fonctionnaliteavance;
 
 
 import com.logonedigital.pi_mentorat_virtuel.entities.ImageEntity;

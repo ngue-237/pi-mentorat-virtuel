@@ -1,7 +1,7 @@
 package com.logonedigital.pi_mentorat_virtuel.controller;
 
 import com.logonedigital.pi_mentorat_virtuel.entities.Commentaire;
-import com.logonedigital.pi_mentorat_virtuel.service.commentaire.CommentaireService;
+import com.logonedigital.pi_mentorat_virtuel.services.commentaire.CommentaireService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;

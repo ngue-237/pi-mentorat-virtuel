@@ -1,4 +1,4 @@
-package com.logonedigital.pi_mentorat_virtuel.service.commentaire;
+package com.logonedigital.pi_mentorat_virtuel.services.commentaire;
 
 import com.logonedigital.pi_mentorat_virtuel.entities.Commentaire;
 import org.springframework.data.domain.Page;

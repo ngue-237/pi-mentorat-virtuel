@@ -1,7 +1,7 @@
 package com.logonedigital.pi_mentorat_virtuel.controller;
 
 import com.logonedigital.pi_mentorat_virtuel.entities.Sujet;
-import com.logonedigital.pi_mentorat_virtuel.service.sujet.SujetService;
+import com.logonedigital.pi_mentorat_virtuel.services.sujet.SujetService;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
