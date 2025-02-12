@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface RessourceService {
     Ressource addRessource (Ressource ressource);
-    List<Ressource> getAllRessourceById ();
+    List<Ressource> getAllRessource ();
     Ressource getRessourceByid (Long id);
     Ressource updateRessourceByid (Ressource ressource, Long id);
     void deleteRessourceByid(Long id);

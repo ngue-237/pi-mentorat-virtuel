@@ -8,11 +8,11 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Enumerated
-    private RoleName RoleName;
+   // @Enumerated
+    //private RoleName RoleName;
     private Date DateCreation;
     private Date DateModification;
     private Boolean Etat;
-    @OneToOne
-    private User user;
+    /*@OneToOne
+    private User user;*/
 }

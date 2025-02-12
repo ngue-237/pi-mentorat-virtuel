@@ -28,7 +28,7 @@ public class RessourceServiceImpl implements RessourceService{
     }
 
     @Override
-    public List<Ressource> getAllRessourceById() {
+    public List<Ressource> getAllRessource() {
 
         return this.ressourceRepo.findAll();
     }
@@ -51,7 +51,7 @@ public class RessourceServiceImpl implements RessourceService{
     }
 
     @Override
-    public void deleteRessourceByid(Long id) {
+    public void deleteRessourceByid(Long id) { this.ressourceRepo.deleteById(id);
 
     }
 }
