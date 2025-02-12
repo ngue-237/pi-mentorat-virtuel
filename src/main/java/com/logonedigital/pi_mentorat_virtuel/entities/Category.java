@@ -28,4 +28,36 @@ public class Category implements Serializable {
     private Boolean etat;
     @OneToMany (mappedBy = "category")
     private List<Ressource> ressources = new ArrayList<>();
+
+    public Integer getIdCategory() {
+        return idCategory;
+    }
+
+    public void setIdCategory(Integer idCategory) {
+        this.idCategory = idCategory;
+    }
+
+    public List<Ressource> getRessources() {
+        return ressources;
+    }
+
+    public void setRessources(List<Ressource> ressources) {
+        this.ressources = ressources;
+    }
+
+    public Boolean getEtat() {
+        return etat;
+    }
+
+    public void setEtat(Boolean etat) {
+        this.etat = etat;
+    }
+
+    public Date getUpdateAt() {
+        return updateAt;
+    }
+
+    public void setUpdateAt(Date updateAt) {
+        this.updateAt = updateAt;
+    }
 }

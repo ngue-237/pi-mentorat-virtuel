@@ -1,5 +1,6 @@
 package com.logonedigital.pi_mentorat_virtuel.Service.Ressource;
 
+import com.logonedigital.pi_mentorat_virtuel.entities.Category;
 import com.logonedigital.pi_mentorat_virtuel.exception.RessourceNotFoundException;
 import com.logonedigital.pi_mentorat_virtuel.entities.Ressource;
 import com.logonedigital.pi_mentorat_virtuel.repository.RessourceRepo;
@@ -42,16 +43,28 @@ public class RessourceServiceImpl implements RessourceService{
     }
 
     @Override
-    public Ressource updateRessourceByid(Ressource newRessource, Long id) {
+    public Ressource updateRessourceByid(Ressource ressource, Long id) {
 
-        Optional<Ressource> oldRessource = this.ressourceRepo.findById(id);
-        if (oldRessource.isEmpty())
-            throw new RessourceNotFoundException("Ressource Not Found");
-        return newRessource;
+        Optional<Ressource> ressourceOptional= this.ressourceRepo.findById(id);
+        if (ressourceOptional.isEmpty())
+            throw new RessourceNotFoundException("ressource not found");
+        if (ressource.getDescription()!=null)
+            ressourceOptional.get().setDescription(ressource.getDescription());
+        if (ressource.getPrix()!=null)
+            ressourceOptional.get().setPrix(ressource.getPrix());
+        if (ressource.getEtat()!=null)
+            ressourceOptional.get().setEtat(ressource.getEtat());
+        if (ressource.getUpdateAt()!=null)
+            ressourceOptional.get().setUpdateAt(ressource.getUpdateAt());
+        if (ressource.getCreatAt()!=null)
+            ressourceOptional.get().setCreatAt(ressource.getCreatAt());
+        return ressourceOptional.get();
     }
 
     @Override
-    public void deleteRessourceByid(Long id) { this.ressourceRepo.deleteById(id);
-
+    public void deleteRessourceByid(Long id) {
+        this.ressourceRepo.delete (this.ressourceRepo.findById(id)
+                .orElseThrow(()->new RessourceNotFoundException("Ressource not found")));
     }
+
 }

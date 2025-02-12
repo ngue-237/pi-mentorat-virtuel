@@ -36,15 +36,23 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Category updateCategoryByid(Category newCategory, Long id) {
-        Optional<Category> oldCategory = this.categoryRepo.findById(id);
-        if (oldCategory.isEmpty())
-            throw new RessourceNotFoundException("Category Not Found");
-        return newCategory;
+    public Category updateCategoryByid(Category category, Long id) {
+        Optional<Category> categoryOptional= this.categoryRepo.findById(id);
+        if (categoryOptional.isEmpty())
+            throw new RessourceNotFoundException("category not found");
+        if (category.getEtat()!=null)
+            categoryOptional.get().setEtat(category.getEtat());
+        if (category.getUpdateAt()!=null)
+            categoryOptional.get().setUpdateAt(category.getUpdateAt());
+
+        return categoryOptional.get();
+
     }
 
     @Override
     public void deleteCategoryByid(Long id) {
 
+        this.categoryRepo.delete(this.categoryRepo.findById(id)
+                .orElseThrow(()->new RessourceNotFoundException("category not found")));
     }
 }
