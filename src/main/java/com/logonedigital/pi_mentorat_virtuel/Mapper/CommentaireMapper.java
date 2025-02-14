@@ -16,6 +16,7 @@ public class CommentaireMapper {
         Commentaire commentaire = new Commentaire();
         commentaire.setContenu(commentaireReqDTO.getContenu());
         commentaire.setStatus(commentaireReqDTO.getStatus());
+        commentaire.setInappropriateReported(commentaireReqDTO.getInappropriateReported());
         commentaire.setDateCreation(LocalDateTime.now());
 
         return commentaire;
@@ -27,6 +28,7 @@ public class CommentaireMapper {
         commentaireRespDTO.setCommentaireId(commentaire.getCommentaireId());
         commentaireRespDTO.setContenu(commentaire.getContenu());
         commentaireRespDTO.setStatus(commentaire.getStatus());
+        commentaireRespDTO.setInappropriateReported(commentaire.getInappropriateReported());
         commentaireRespDTO.setDateCreation(commentaire.getDateCreation());
         commentaireRespDTO.setDateModification(LocalDateTime.now());
 

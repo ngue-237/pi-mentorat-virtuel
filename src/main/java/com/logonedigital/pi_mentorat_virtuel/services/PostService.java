@@ -12,8 +12,8 @@ public interface PostService {
     PostRespDTO addPost(PostReqDTO postReqDTO);
     List<Post> getAllPost();
     Post getPostByNom(String nom);
-    Page<Post> getsPost(int pageNumber,int pageSize);
-    Post getPostById(Integer postId);
+    Page<PostRespDTO> getsPost(int offset,int pageSize);
+    PostRespDTO getPostById(Integer postId);
     Post updatePostById(Post post,Integer postId);
     void deletePostById(Integer postId);
 

@@ -8,7 +8,16 @@ import java.time.LocalDateTime;
 public class CommentaireReqDTO {
     private String contenu;
     private Boolean status;
+    private Boolean isInappropriateReported ;
     private LocalDateTime dateCreation;
+
+    public Boolean getInappropriateReported() {
+        return isInappropriateReported;
+    }
+
+    public void setInappropriateReported(Boolean inappropriateReported) {
+        isInappropriateReported = inappropriateReported;
+    }
 
     public String getContenu() {
         return contenu;

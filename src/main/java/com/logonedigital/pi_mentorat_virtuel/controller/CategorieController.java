@@ -2,8 +2,7 @@ package com.logonedigital.pi_mentorat_virtuel.controller;
 
 import com.logonedigital.pi_mentorat_virtuel.dto.CategorieReqDTO;
 import com.logonedigital.pi_mentorat_virtuel.dto.CategorieRespDTO;
-import com.logonedigital.pi_mentorat_virtuel.entities.Categrorie;
-import com.logonedigital.pi_mentorat_virtuel.entities.Commentaire;
+import com.logonedigital.pi_mentorat_virtuel.entities.Categorie;
 import com.logonedigital.pi_mentorat_virtuel.services.CategorieService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -15,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class CategorieController {
@@ -48,14 +46,14 @@ public class CategorieController {
             @ApiResponse(responseCode = "200", description = "liste des categories recuperee aec success")
     })
     @GetMapping(path = "categorie/get-all-categorie")
-    public ResponseEntity<List<Categrorie>> getAllCategorie(){
+    public ResponseEntity<List<Categorie>> getAllCategorie(){
         return ResponseEntity
                 .ok(this.categorieService.getAllCategorie());
     }
-    @GetMapping(path = "categorie/pagination/{page}/{size}")
-    public ResponseEntity<Page<Categrorie>> pagination(@PathVariable int page,@PathVariable int size){
+    @GetMapping(path = "categorie/pagination/{offset}/{pageSize}")
+    public ResponseEntity<Page<CategorieRespDTO>> pagination(@PathVariable int offset, @PathVariable int pageSize){
         return ResponseEntity
-                .ok(this.categorieService.getsPost(page, size));
+                .ok(this.categorieService.getsCategorie(offset, pageSize));
     }
 
     @Operation(
@@ -67,7 +65,7 @@ public class CategorieController {
             @ApiResponse(responseCode = "404", description = "Catégorie non trouvée pour l'ID donné.")
     })
     @GetMapping(path = "categorie/get-categorie-by-id/{categorieId}")
-    public ResponseEntity<Categrorie> getCategorieById(@PathVariable Integer categorieId){
+    public ResponseEntity<CategorieRespDTO> getCategorieById(@PathVariable Integer categorieId){
         return ResponseEntity
                 .ok(this.categorieService.getCategorieById(categorieId));
     }
@@ -80,7 +78,7 @@ public class CategorieController {
             @ApiResponse(responseCode = "400", description = "Les données envoyées sont invalides ou incomplètes.")
     })
     @PutMapping(path = "categorie/update-categorie-by-id/{categorieId}")
-    public ResponseEntity<Categrorie> updateCategorieById(@Valid @RequestBody Categrorie categrorie,@PathVariable Integer categorieId){
+    public ResponseEntity<Categorie> updateCategorieById(@Valid @RequestBody Categorie categrorie, @PathVariable Integer categorieId){
         return ResponseEntity
                 .ok(this.categorieService.updateCategorie(categrorie, categorieId));
     }

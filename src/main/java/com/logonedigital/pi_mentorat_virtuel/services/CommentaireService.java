@@ -12,10 +12,9 @@ public interface CommentaireService {
 
     CommentaireRespDTO addCommentaire(CommentaireReqDTO commentaireReqDTO);
     List<Commentaire> getAllCommentaire();
-    Page<Commentaire> getsCommentaire(int pageNumber,int pageSize);
-    Commentaire reportInappropriateCommentaire(Integer commentaireId);
+    Page<CommentaireRespDTO> getsCommentaire(int offset,int pageSize);
     List<Commentaire> getReportedComments(); // Récupérer les commentaires signalés comme inappropriés
-    Commentaire getCommentaireById(Integer commentaireId);
+    CommentaireRespDTO getCommentaireById(Integer commentaireId);
     Commentaire updateCommentaireById(Commentaire commentaire,Integer commentaireId);
     void deleteCommentaireById(Integer commentaireId);
 
