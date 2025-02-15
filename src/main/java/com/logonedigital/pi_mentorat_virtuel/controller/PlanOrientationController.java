@@ -27,6 +27,7 @@ public class PlanOrientationController  {
                 .status(201)
                 .body(planOrientationService.addPlanOrientation(planOrientationReqDTO));
     }
+
     @GetMapping(path = "planOrientation/get_all/{offset}/{pageSize}")
     public ResponseEntity <Page<PlanOrientationResDTO>> getAllPlanOrientation(@PathVariable int offset,@PathVariable int pageSize){
         return  ResponseEntity

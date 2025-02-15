@@ -1,12 +1,14 @@
 package com.logonedigital.pi_mentorat_virtuel.service.Objectif;
 
 import com.logonedigital.pi_mentorat_virtuel.Exception.ResourceNotFoundException;
+import com.logonedigital.pi_mentorat_virtuel.dto.ObjectifReqDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.ObjectifResDTO;
 import com.logonedigital.pi_mentorat_virtuel.entities.Objectif;
-import com.logonedigital.pi_mentorat_virtuel.entities.PlanOrientation;
+import com.logonedigital.pi_mentorat_virtuel.mapper.ObjectifMapper;
 import com.logonedigital.pi_mentorat_virtuel.repositories.ObjectifRepo;
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -18,16 +20,19 @@ import java.util.Optional;
 public class  ObjectifServiceImpl implements ObjectifService {
 
     private final ObjectifRepo objectifRepo;
+    private final ObjectifMapper objectifMapper;
 
-    public ObjectifServiceImpl(ObjectifRepo objectifRepo) {
+    public ObjectifServiceImpl(ObjectifRepo objectifRepo, ObjectifMapper objectifMapper) {
         this.objectifRepo = objectifRepo;
+        this.objectifMapper = objectifMapper;
     }
 
     @Override
-    public Objectif addObjectif(Objectif objectif) {
+    public ObjectifResDTO addObjectif(ObjectifReqDTO objectifReqDTO) {
+        Objectif objectif = this.objectifMapper.fromObjectifReqDTO(objectifReqDTO);
         objectif.setCreatedAt(new Date());
         objectif.setStatus(true);
-        return this.objectifRepo.saveAndFlush(objectif);
+        return this.objectifMapper.fromObjectif(this.objectifRepo.saveAndFlush(objectif));
     }
 
     @Override
@@ -35,10 +40,11 @@ public class  ObjectifServiceImpl implements ObjectifService {
         return this.objectifRepo.findAll();
     }
 
-   // @Override
-   // public Page<PlanOrientation> getObjectifs(int offset, int pageSize) {
-   //     return null;
-  //  }
+    @Override
+    public Page<ObjectifResDTO> getObjectifs(int offset, int pageSize) {
+        return this.objectifRepo.findAll(PageRequest.of(offset,pageSize, Sort.by(Sort.Direction.DESC,"createdAt")))
+                .map(this.objectifMapper::fromObjectif);
+    }
 
     @Override
     public Objectif getObjectifById(Integer objectifid) {

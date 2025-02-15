@@ -1,8 +1,11 @@
 package com.logonedigital.pi_mentorat_virtuel.controller;
 
 
+import com.logonedigital.pi_mentorat_virtuel.dto.ObjectifReqDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.ObjectifResDTO;
 import com.logonedigital.pi_mentorat_virtuel.entities.Objectif;
 import com.logonedigital.pi_mentorat_virtuel.service.Objectif.ObjectifService;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,11 +21,11 @@ public class ObjectifController  {
     }
 
     @PostMapping(path = "objectif/add")
-    public ResponseEntity<Objectif> addObjectif(@RequestBody Objectif objectif) {
+    public ResponseEntity<ObjectifResDTO> addObjectif(@RequestBody ObjectifReqDTO objectifReqDTO) {
 
         return ResponseEntity
                 .status(201)
-                .body(this.objectifService.addObjectif(objectif));
+                .body(this.objectifService.addObjectif(objectifReqDTO));
     }
 
     @GetMapping(path = "objectif/get_all")
@@ -30,6 +33,14 @@ public class ObjectifController  {
         return ResponseEntity.status(200)
                 .body(this.objectifService.getAllObjectif());
     }
+
+    @GetMapping(path = "objectif/get_all/{offset}/{pageSize}")
+    public ResponseEntity<Page<ObjectifResDTO>> getAllPlanOrientation(@PathVariable int offset, @PathVariable int pageSize){
+        return  ResponseEntity
+                .status(200)
+                .body(this.objectifService.getObjectifs(offset, pageSize));
+    }
+
     @GetMapping(path = "objectif/get_by_id/{objectifId}")
     public ResponseEntity<Objectif> getObjectifById(@PathVariable Integer objectifId) {
 
