@@ -1,8 +1,14 @@
 package com.logonedigital.pi_mentorat_virtuel.service.PlanOrientation;
 
 import com.logonedigital.pi_mentorat_virtuel.Exception.ResourceNotFoundException;
+import com.logonedigital.pi_mentorat_virtuel.dto.PlanOrientationReqDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.PlanOrientationResDTO;
 import com.logonedigital.pi_mentorat_virtuel.entities.PlanOrientation;
+import com.logonedigital.pi_mentorat_virtuel.mapper.ObjectifMapper;
 import com.logonedigital.pi_mentorat_virtuel.repositories.PlanOrientationRepo;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -13,16 +19,18 @@ import java.util.Optional;
 public class PlanOrientationServiceImpl implements PlanOrientationService {
 
     private final PlanOrientationRepo planOrientationRepo;
+    private final ObjectifMapper objectifMapper;
 
-    public PlanOrientationServiceImpl(PlanOrientationRepo planOrientationRepo) {
+    public PlanOrientationServiceImpl(PlanOrientationRepo planOrientationRepo, ObjectifMapper objectifMapper) {
         this.planOrientationRepo = planOrientationRepo;
+        this.objectifMapper = objectifMapper;
     }
     @Override
-    public PlanOrientation addPlanOrientation(PlanOrientation planOrientation) {
-
+    public PlanOrientationResDTO addPlanOrientation(PlanOrientationReqDTO planOrientationReqDTO) {
+PlanOrientation planOrientation=this.objectifMapper.fromPlanOrientationReqDTO(planOrientationReqDTO);
         planOrientation.setCreatedAt(new Date());
         planOrientation.setStatus(true);
-        return this.planOrientationRepo.saveAndFlush(planOrientation);
+        return this.objectifMapper.fromPlanOrientation(this.planOrientationRepo.save(planOrientation));
     }
 
     @Override
@@ -31,11 +39,11 @@ public class PlanOrientationServiceImpl implements PlanOrientationService {
         return  this.planOrientationRepo.findAll();
     }
 
-   // @Override
-    //  public Page<PlanOrientation> getplanOrientations(int offset, int pageSize) {
-       // return this.planOrientationRepo.findAll(PageRequest.of(offset,pageSize, Sort.by(Sort.Direction.DESC,"createdAt")))
-              //  .map(this.)
-   // }
+    @Override
+      public Page<PlanOrientationResDTO> getplanOrientations(int offset, int pageSize) {
+        return this.planOrientationRepo.findAll(PageRequest.of(offset,pageSize, Sort.by(Sort.Direction.DESC,"createdAt")))
+                .map(this.objectifMapper::fromPlanOrientation);
+    }
 
     @Override
     public PlanOrientation getPlanOrientationById(Integer planId) {

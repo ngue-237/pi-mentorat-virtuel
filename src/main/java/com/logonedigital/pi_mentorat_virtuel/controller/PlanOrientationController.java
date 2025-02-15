@@ -1,8 +1,11 @@
 package com.logonedigital.pi_mentorat_virtuel.controller;
 
 
+import com.logonedigital.pi_mentorat_virtuel.dto.PlanOrientationReqDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.PlanOrientationResDTO;
 import com.logonedigital.pi_mentorat_virtuel.entities.PlanOrientation;
 import com.logonedigital.pi_mentorat_virtuel.service.PlanOrientation.PlanOrientationService;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,13 +20,18 @@ public class PlanOrientationController  {
     public PlanOrientationController(PlanOrientationService planOrientationService) {
         this.planOrientationService = planOrientationService;
     }
-
     @PostMapping(path = "PlanOrientation/add")
-    public ResponseEntity<PlanOrientation> addPlanOrientation( @RequestBody PlanOrientation planOrientation) {
+    public ResponseEntity<PlanOrientationResDTO> addPlanOrientation(@RequestBody PlanOrientationReqDTO planOrientationReqDTO) {
 
         return ResponseEntity
                 .status(201)
-                .body(planOrientationService.addPlanOrientation(planOrientation));
+                .body(planOrientationService.addPlanOrientation(planOrientationReqDTO));
+    }
+    @GetMapping(path = "planOrientation/get_all/{offset}/{pageSize}")
+    public ResponseEntity <Page<PlanOrientationResDTO>> getAllPlanOrientation(@PathVariable int offset,@PathVariable int pageSize){
+        return  ResponseEntity
+                .status(200)
+                .body(this.planOrientationService.getplanOrientations(offset, pageSize));
     }
 
     @GetMapping(path = "planOrientations/get_all")
