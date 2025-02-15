@@ -19,7 +19,7 @@ import java.util.List;
 @Getter
 @Entity
 @Table(name = "Commentaires")
-public class Commentaire implements Serializable {
+public class Comment implements Serializable {
     @Serial
     private static final long serialVersionUID =1L;
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,7 +37,7 @@ public class Commentaire implements Serializable {
 
 
     @ManyToMany
-    private List<Sujet> sujet = new ArrayList<>();
+    private List<Suje> suje = new ArrayList<>();
 /*
     @OneToMany(mappedBy = "commentaire", cascade = CascadeType.ALL)
     private List<Rating> ratings;*/  // Liste des notations associées
@@ -82,12 +82,12 @@ public class Commentaire implements Serializable {
         this.createdAt = createdAt;
     }
 
-    public List<Sujet> getSujet() {
-        return sujet;
+    public List<Suje> getSuje() {
+        return suje;
     }
 
-    public void setSujet(List<Sujet> sujet) {
-        this.sujet = sujet;
+    public void setSuje(List<Suje> suje) {
+        this.suje = suje;
     }
 }
 

@@ -20,7 +20,7 @@ import java.util.List;
 @Getter
 @Entity
 @Table(name = "Sujets")
-public class Sujet implements Serializable {
+public class Suje implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,7 +44,7 @@ public class Sujet implements Serializable {
     private List<Forum> forum = new ArrayList<>();
 
     @ManyToMany
-    private List<Commentaire> commentaire = new ArrayList<>();
+    private List<Comment> comment = new ArrayList<>();
 
     public Date getUpdatedAt() {
         return updatedAt;

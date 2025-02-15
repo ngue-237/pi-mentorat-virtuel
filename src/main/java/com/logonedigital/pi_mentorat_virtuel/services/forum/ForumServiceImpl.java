@@ -2,11 +2,11 @@ package com.logonedigital.pi_mentorat_virtuel.services.forum;
 
 import com.github.slugify.Slugify;
 import com.logonedigital.pi_mentorat_virtuel.entities.Forum;
-import com.logonedigital.pi_mentorat_virtuel.entities.Sujet;
+import com.logonedigital.pi_mentorat_virtuel.entities.Suje;
 import com.logonedigital.pi_mentorat_virtuel.exception.ResourceExisteException;
 import com.logonedigital.pi_mentorat_virtuel.exception.ResourceNotFoundException;
 import com.logonedigital.pi_mentorat_virtuel.repositories.ForumRepo;
-import com.logonedigital.pi_mentorat_virtuel.repositories.SujetRepo;
+import com.logonedigital.pi_mentorat_virtuel.repositories.SujeRepo;
 import com.logonedigital.pi_mentorat_virtuel.repositories.UserRepo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -20,12 +20,12 @@ import java.util.Optional;
 @Service
 public class ForumServiceImpl implements ForumService {
     private final ForumRepo forumRepo;
-    private final SujetRepo sujetRepo;
+    private final SujeRepo sujeRepo;
     private final UserRepo userRepo;
 
-    public ForumServiceImpl(ForumRepo forumRepo, SujetRepo sujetRepo, UserRepo userRepo) {
+    public ForumServiceImpl(ForumRepo forumRepo, SujeRepo sujeRepo, UserRepo userRepo) {
         this.forumRepo = forumRepo;
-        this.sujetRepo = sujetRepo;
+        this.sujeRepo = sujeRepo;
         this.userRepo = userRepo;
     }
 
@@ -93,12 +93,12 @@ public class ForumServiceImpl implements ForumService {
 
     @Override
     public Forum liaison(Integer forumId, Integer sujetId) {
-        List<Sujet> sujetList = null;
+        List<Suje> sujeList = null;
         Forum forum = forumRepo.findById(forumId).get();
-        Sujet sujet = sujetRepo.findById(sujetId).get();
-        sujetList = forum.getSujetForum();
-        sujetList.add(sujet);
-        forum.setSujetForum(sujetList);
+        Suje suje = sujeRepo.findById(sujetId).get();
+        sujeList = forum.getSujeForum();
+        sujeList.add(suje);
+        forum.setSujeForum(sujeList);
          return forumRepo.save(forum);
     }
 }

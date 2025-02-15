@@ -40,7 +40,7 @@ public class Forum {
     @JoinTable(name = "sujet_forum",
             joinColumns = @JoinColumn(name = "forumId"),
             inverseJoinColumns = @JoinColumn(name = "sujetId"))
-    private List<Sujet> sujetForum = new ArrayList<>();
+    private List<Suje> sujeForum = new ArrayList<>();
 
 
     public Integer getForumId() {
@@ -107,12 +107,12 @@ public class Forum {
         this.user = user;
     }
 
-    public List<Sujet> getSujetForum() {
-        return sujetForum;
+    public List<Suje> getSujeForum() {
+        return sujeForum;
     }
 
-    public void setSujetForum(List<Sujet> sujetForum) {
-        this.sujetForum = sujetForum;
+    public void setSujeForum(List<Suje> sujeForum) {
+        this.sujeForum = sujeForum;
     }
 }
 
