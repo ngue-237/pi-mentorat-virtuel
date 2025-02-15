@@ -50,15 +50,15 @@ public class CommentaireController {
             @ApiResponse(responseCode = "201", description = "Commentaire recuperer avec succès"),
             @ApiResponse(responseCode = "400", description = "Les données envoyées sont invalides")
     })
-    /*@GetMapping(path = "commentaire/report/{commentaireId}")
+    @GetMapping(path = "commentaire/report/{commentaireId}")
     public ResponseEntity<Commentaire> reportInappropriateCommentaire(@PathVariable Integer commentaireId){
         Commentaire updatedCommentaire = commentaireService.reportInappropriateCommentaire(commentaireId);
         return ResponseEntity.ok(commentaireService.reportInappropriateCommentaire(commentaireId));
-    }*/
-    @GetMapping(path = "commentaire/pagination/{offset}/{pageSize}")
-    public ResponseEntity<Page<CommentaireRespDTO>> Pagination(@PathVariable int offset,@PathVariable int pageSize){
+    }
+    @GetMapping(path = "commentaire/pagination/{pageNumber}/{pageSize}")
+    public ResponseEntity<Page<Commentaire>> Pagination(@PathVariable int pageNumber,@PathVariable int pageSize){
         return ResponseEntity
-                .ok(this.commentaireService.getsCommentaire(offset, pageSize));
+                .ok(this.commentaireService.getsCommentaire(pageNumber, pageSize));
     }
     @Operation(
 
@@ -97,7 +97,7 @@ public class CommentaireController {
             @ApiResponse(responseCode = "404", description = "Commentaire non trouvé pour l'ID donné.")
     })
     @GetMapping(path = "commentaire/get-commentaire-by-id/{commentaireId}")
-    public ResponseEntity<CommentaireRespDTO> getCommentaireById(@PathVariable Integer commentaireId){
+    public ResponseEntity<Commentaire> getCommentaireById(@PathVariable Integer commentaireId){
         return ResponseEntity
                 .ok(this.commentaireService.getCommentaireById(commentaireId));
     }

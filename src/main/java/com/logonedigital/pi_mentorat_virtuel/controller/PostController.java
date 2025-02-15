@@ -51,10 +51,10 @@ public class PostController {
         return ResponseEntity
                 .ok(this.postService.getAllPost());
     }
-    @GetMapping(path = "post/pagination/{offset}/{pageSize}")
-    public ResponseEntity<Page<PostRespDTO>> pagination(@PathVariable int offset,@PathVariable int pageSize){
+    @GetMapping(path = "post/pagination/{pageNumber}/{pageSize}")
+    public ResponseEntity<Page<Post>> pagination(@PathVariable int pageNumber,@PathVariable int pageSize){
         return ResponseEntity
-                .ok(this.postService.getsPost(offset, pageSize));
+                .ok(this.postService.getsPost(pageNumber, pageSize));
     }
     @Operation(
             summary = "Récupérer une catégorie par son nom",
@@ -78,7 +78,7 @@ public class PostController {
             @ApiResponse(responseCode = "404", description = "Catégorie non trouvée pour l'ID donné.")
     })
     @GetMapping(path = "post/get-post-by-id/{postId}")
-    public ResponseEntity<PostRespDTO> getPostById(@PathVariable Integer postId){
+    public ResponseEntity<Post> getPostById(@PathVariable Integer postId){
         return ResponseEntity
                 .ok(this.postService.getPostById(postId));
     }
