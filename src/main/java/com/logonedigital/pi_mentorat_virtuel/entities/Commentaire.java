@@ -23,7 +23,6 @@ public class Commentaire implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer commentaireId;
-    @NotEmpty(message = "ce champ est obligatoire")
     private String contenu;
     private Boolean status;
     private Boolean isInappropriateReported ; // utisalisateur peut signaler

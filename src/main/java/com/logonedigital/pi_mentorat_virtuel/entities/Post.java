@@ -1,5 +1,6 @@
 package com.logonedigital.pi_mentorat_virtuel.entities;
 
+import com.logonedigital.pi_mentorat_virtuel.dto.PostReqDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
@@ -19,9 +20,7 @@ import java.util.List;
 public class Post {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer postId;
-    @NotEmpty(message = "ce champ est obligatoire")
     private String nom;
-    @NotEmpty(message = "ce champ est obligatoire")
     private String contenu;
     private Boolean status;
     private LocalDateTime dateCreation;
@@ -79,4 +78,11 @@ public class Post {
     public void setDateModification(LocalDateTime dateModification) {
         this.dateModification = dateModification;
     }
+
+  /*  public PostReqDTO getCommentaire() {
+        return null;
+    }
+
+    public void setCommentaire(Commentaire commentaire) {
+    }*/
 }

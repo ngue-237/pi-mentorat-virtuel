@@ -9,7 +9,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 public class 	PiMentoratVirtuelApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PiMentoratVirtuelApplication.class, args);
+		SpringApplication.
+				run(PiMentoratVirtuelApplication.class, args);
 	}
 
 }
