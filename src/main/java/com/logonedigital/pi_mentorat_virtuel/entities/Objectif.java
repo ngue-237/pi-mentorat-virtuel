@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -14,9 +15,7 @@ public class Objectif implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    private Integer ObjectifId;
-
+    private Integer objectifId;
     private String libelle;
     private  String domaine;
     private String description;
@@ -27,13 +26,13 @@ public class Objectif implements Serializable {
     private Boolean status;
 
     @OneToMany(mappedBy = "objectif", cascade = CascadeType.ALL,orphanRemoval = true)
-    private List<PlanOrientation > planOrientations;
+    private List<PlanOrientation > planOrientations = new ArrayList<>();
 
     public Objectif() {
     }
 
     public Objectif(Integer objectifId, String libelle, String domaine, String description, Date createdAt, Date updatedAt, Boolean status, List<PlanOrientation> planOrientations) {
-        ObjectifId = objectifId;
+        this.objectifId = objectifId;
         this.libelle = libelle;
         this.domaine = domaine;
         this.description = description;
@@ -44,11 +43,11 @@ public class Objectif implements Serializable {
     }
 
     public Integer getObjectifId() {
-        return ObjectifId;
+        return objectifId;
     }
 
     public void setObjectifId(Integer objectifId) {
-        ObjectifId = objectifId;
+        objectifId = objectifId;
     }
 
     public String getLibelle() {
@@ -99,27 +98,12 @@ public class Objectif implements Serializable {
         this.status = status;
     }
 
-    public List<PlanOrientation> getPlanOrientations() {
+    public List<PlanOrientation> getPlanOrientation() {
         return planOrientations;
     }
 
-    public void setPlanOrientations(List<PlanOrientation> planOrientations) {
+    public void setPlanOrientations(List<PlanOrientation> planOrientation) {
         this.planOrientations = planOrientations;
     }
 
-
-
-    @Override
-    public String toString() {
-        return "Objectif{" +
-                "ObjectifId=" + ObjectifId +
-                ", libelle='" + libelle + '\'' +
-                ", domaine='" + domaine + '\'' +
-                ", description='" + description + '\'' +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                ", status=" + status +
-                ", planOrientations=" + planOrientations +
-                '}';
-    }
 }

@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "planOrientations")
@@ -16,28 +15,29 @@ public class PlanOrientation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Integer planId;
+    private String suivi;
     private String description;
     @Temporal(TemporalType.TIME)
     private Date createdAt;
     @Temporal(TemporalType.TIME)
     private Date updatedAt;
-    private String suivi;
+    private  Boolean status;
 
     @ManyToOne
-    @JoinColumn(name = "objectif_id")
+    @JoinColumn(name = "objectif")
     private Objectif objectif;
 
     public PlanOrientation() {
 
     }
 
-
-    public PlanOrientation(Integer planId, String description, Date createdAt, Date updatedAt, String suivi, Objectif objectif) {
+    public PlanOrientation(Integer planId, String suivi, String description, Date createdAt, Date updatedAt, Boolean status, Objectif objectif) {
         this.planId = planId;
         this.description = description;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.suivi = suivi;
+        this.status = status;
         this.objectif = objectif;
     }
 
@@ -89,15 +89,11 @@ public class PlanOrientation implements Serializable {
         this.objectif = objectif;
     }
 
-    @Override
-    public String toString() {
-        return "PlanOrientation{" +
-                ",planId=" + planId +
-                ",description ='" + description + '\'' +
-                ", suivi='" + suivi + '\'' +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                ", objectif=" + objectif +
-                '}';
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 }

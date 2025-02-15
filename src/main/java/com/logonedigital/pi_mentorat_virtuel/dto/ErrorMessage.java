@@ -1,4 +1,4 @@
-package com.logonedigital.pi_mentorat_virtuel;
+package com.logonedigital.pi_mentorat_virtuel.dto;
 
 import java.util.Date;
 

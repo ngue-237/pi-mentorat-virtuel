@@ -3,36 +3,56 @@ package com.logonedigital.pi_mentorat_virtuel.controller;
 
 import com.logonedigital.pi_mentorat_virtuel.entities.PlanOrientation;
 import com.logonedigital.pi_mentorat_virtuel.service.PlanOrientation.PlanOrientationService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api/planOrientations")
 public class PlanOrientationController  {
 
-    private PlanOrientationService planOrientationService;
+    public final  PlanOrientationService planOrientationService;
 
-
-
-    @GetMapping("/{planId}")
-    public Optional<PlanOrientation> getPlanOrientationById(@PathVariable int planId) {
-        return this.planOrientationService.getPlanOrientationById(planId);
-    }
-    @PostMapping
-    public PlanOrientation createPlanOrientation(@RequestBody PlanOrientation planOrientation) {
-
-        return planOrientationService.addPlanOrientation(planOrientation);
-    }
-    @PutMapping
-    public Object updatePlanOrientation(@RequestBody PlanOrientation planOrientation, @PathVariable int planId) {
-
-        return planOrientationService.updatePlanOrientation(planOrientation);
+    public PlanOrientationController(PlanOrientationService planOrientationService) {
+        this.planOrientationService = planOrientationService;
     }
 
-    @DeleteMapping("/{planId}")
-    public void deletePlanOrientation(@PathVariable int planId) {
-        planOrientationService.deletePlanOrientation(planId);
+    @PostMapping(path = "PlanOrientation/add")
+    public ResponseEntity<PlanOrientation> addPlanOrientation( @RequestBody PlanOrientation planOrientation) {
+
+        return ResponseEntity
+                .status(201)
+                .body(planOrientationService.addPlanOrientation(planOrientation));
+    }
+
+    @GetMapping(path = "planOrientations/get_all")
+    public ResponseEntity<List<PlanOrientation>>getAllPlanOrientation(){
+        return ResponseEntity.status(200)
+                .body(this.planOrientationService.getAllPlanOrientation());
+    }
+    @GetMapping(path = "planOrientation/get_by_id/{planId}")
+    public ResponseEntity<PlanOrientation> getPlanOrientationById(@PathVariable Integer planId) {
+
+        return ResponseEntity
+                .status(200)
+                .body(this.planOrientationService.getPlanOrientationById(planId));
+    }
+
+    @PutMapping(path = "planOrientation/update_by_id/{planId}")
+    public ResponseEntity<PlanOrientation> updatePlanOrientation(@RequestBody PlanOrientation planOrientation, @PathVariable Integer planId) {
+
+        return ResponseEntity
+                .status(202)
+                .body( planOrientationService.updatePlanOrientation(planOrientation,planId));
+    }
+
+    @DeleteMapping(path = "planOrientation/delete_by_id/{planId}")
+    public ResponseEntity<String> deletePlanOrientationBYId(@PathVariable Integer planId) {
+        this.planOrientationService.deletePlanOrientation(planId);
+        return ResponseEntity
+                .status(202)
+                .body("Deleted successfully!");
     }
 
 

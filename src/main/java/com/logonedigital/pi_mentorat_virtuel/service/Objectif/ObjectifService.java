@@ -1,6 +1,8 @@
 package com.logonedigital.pi_mentorat_virtuel.service.Objectif;
 
 import com.logonedigital.pi_mentorat_virtuel.entities.Objectif;
+import com.logonedigital.pi_mentorat_virtuel.entities.PlanOrientation;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -8,16 +10,17 @@ public interface ObjectifService {
 
     Objectif addObjectif(Objectif objectif);
 
-    void deleteObjectifById(int id);
-
     List<Objectif> getAllObjectif();
 
-    Void deleteObjectif(int objectifId);
+    //Page<PlanOrientation> getObjectifs(int offset, int pageSize);
 
-    Objectif getObjectifById(int id);
+    Objectif getObjectifById(Integer objectifid);
 
-    Void deleteObjetif(int id);
+    Objectif updateObjectif(Objectif objectif, Integer objectifId);
 
-    Objectif updateObjectif(Objectif objectif);
+    void deleteObjectifById(Integer id);
+
+
+
 
 }
