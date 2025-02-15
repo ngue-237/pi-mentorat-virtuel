@@ -23,11 +23,9 @@ public class Commentaire implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer commentaireId;
-    @NotEmpty(message = "ce champ est obligatoire")
     private String contenu;
     private Boolean status;
-    private Boolean isApproved = false; // moderation automatique par default
-    private Boolean isInappropriateReported = false; // utisalisateur peut signaler
+    private Boolean isInappropriateReported ; // utisalisateur peut signaler
     private LocalDateTime dateCreation;
     private LocalDateTime dateModification;
 
@@ -55,14 +53,6 @@ public class Commentaire implements Serializable {
 
     public void setStatus(Boolean status) {
         this.status = status;
-    }
-
-    public Boolean getApproved() {
-        return isApproved;
-    }
-
-    public void setApproved(Boolean approved) {
-        isApproved = approved;
     }
 
     public Boolean getInappropriateReported() {

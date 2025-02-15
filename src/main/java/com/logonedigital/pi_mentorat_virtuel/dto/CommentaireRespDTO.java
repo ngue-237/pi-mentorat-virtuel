@@ -9,8 +9,26 @@ public class CommentaireRespDTO {
     private Integer commentaireId;
     private String contenu;
     private Boolean status;
+    private Boolean isInappropriateReported ;
     private LocalDateTime dateCreation;
     private LocalDateTime dateModification;
+    private Integer postId;
+
+    public Integer getPostId() {
+        return postId;
+    }
+
+    public void setPostId(Integer postId) {
+        this.postId = postId;
+    }
+
+    public Boolean getInappropriateReported() {
+        return isInappropriateReported;
+    }
+
+    public void setInappropriateReported(Boolean inappropriateReported) {
+        isInappropriateReported = inappropriateReported;
+    }
 
     public Integer getCommentaireId() {
         return commentaireId;

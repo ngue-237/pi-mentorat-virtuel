@@ -10,6 +10,7 @@ import com.logonedigital.pi_mentorat_virtuel.repository.PostRepo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -52,15 +53,18 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
-    public Page<Post> getsPost(int pageNumber, int pageSize) {
-        Pageable pageable = PageRequest.of(pageNumber, pageSize);
-        return this.postRepo.findAll(pageable);
+    public Page<PostRespDTO> getsPost(int offset, int pageSize) {
+
+        return this.postRepo.findAll(PageRequest.of(offset, pageSize, Sort.by(Sort.Direction.DESC,"dateCreation")))
+                .map(post -> this.postMapper.toDto(post));
     }
 
     @Override
-    public Post getPostById(Integer postId) {
-        return this.postRepo.findById(postId)
-                .orElseThrow(()-> new ResourceExistException("post isn't exist!!"));
+    public PostRespDTO getPostById(Integer postId) {
+
+        Post post = this.postRepo.findById(postId)
+                .orElseThrow(()-> new ResourceNotFoundException("post not found!!"));
+        return postMapper.toDto(post);
     }
 
     @Override

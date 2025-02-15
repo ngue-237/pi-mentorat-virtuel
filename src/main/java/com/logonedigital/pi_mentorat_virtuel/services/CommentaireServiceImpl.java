@@ -10,6 +10,7 @@ import com.logonedigital.pi_mentorat_virtuel.repository.CommentaireRepo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -43,13 +44,12 @@ public class CommentaireServiceImpl implements CommentaireService{
     }
 
     @Override
-    public Page<Commentaire> getsCommentaire(int pageNumber, int pageSize) {
-
-        Pageable pageable = PageRequest.of(pageNumber, pageSize);
-        return this.commentaireRepo.findAll(pageable);
+    public Page<CommentaireRespDTO> getsCommentaire(int offset, int pageSize) {
+        return this.commentaireRepo.findAll(PageRequest.of(offset, pageSize, Sort.by(Sort.Direction.DESC,"dateCreation")))
+                .map(commentaire -> this.commentaireMapper.toDto(commentaire));
     }
 
-    @Override
+    /*@Override
     public Commentaire reportInappropriateCommentaire(Integer commentaireId) {
         Optional<Commentaire> commentaireOptional = this.commentaireRepo.findById(commentaireId);
         if (commentaireOptional.isEmpty())
@@ -58,7 +58,7 @@ public class CommentaireServiceImpl implements CommentaireService{
         commentaire.setInappropriateReported(true);
 
         return commentaireRepo.save(commentaire);
-    }
+    }*/
 
     @Override
     public List<Commentaire> getReportedComments() {
@@ -66,10 +66,11 @@ public class CommentaireServiceImpl implements CommentaireService{
     }
 
     @Override
-    public Commentaire getCommentaireById(Integer commentaireId) {
+    public CommentaireRespDTO getCommentaireById(Integer commentaireId) {
 
-        return this.commentaireRepo.findById(commentaireId)
-                .orElseThrow(()->new ResourceExistException("comment isn't present!!"));
+        Commentaire commentaire = commentaireRepo.findById(commentaireId)
+                .orElseThrow(()-> new ResourceNotFoundException("comment not found!!"));
+        return commentaireMapper.toDto(commentaire);
     }
 
     @Override

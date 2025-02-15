@@ -1,14 +1,34 @@
 package com.logonedigital.pi_mentorat_virtuel.dto;
 
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
 @Data
 public class CommentaireReqDTO {
+    @NotEmpty(message = "ce champ est obligatoire")
     private String contenu;
     private Boolean status;
+    private Boolean isInappropriateReported ;
     private LocalDateTime dateCreation;
+    private Integer postId;
+
+    public Integer getPostId() {
+        return postId;
+    }
+
+    public void setPostId(Integer postId) {
+        this.postId = postId;
+    }
+
+    public Boolean getInappropriateReported() {
+        return isInappropriateReported;
+    }
+
+    public void setInappropriateReported(Boolean inappropriateReported) {
+        isInappropriateReported = inappropriateReported;
+    }
 
     public String getContenu() {
         return contenu;

@@ -12,6 +12,24 @@ public class PostRespDTO {
     private Boolean status;
     private LocalDateTime dateCreation;
     private LocalDateTime dateModification;
+    private Integer categorieId;
+    private Integer commentaireId;
+
+    public Integer getCommentaireId() {
+        return commentaireId;
+    }
+
+    public void setCommentaireId(Integer commentaireId) {
+        this.commentaireId = commentaireId;
+    }
+
+    public Integer getCategorieId() {
+        return categorieId;
+    }
+
+    public void setCategorieId(Integer categorieId) {
+        this.categorieId = categorieId;
+    }
 
     public Integer getPostId() {
         return postId;
