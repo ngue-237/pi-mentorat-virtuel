@@ -1,18 +1,19 @@
 package com.logonedigital.pi_mentorat_virtuel.service.Objectif;
 
+import com.logonedigital.pi_mentorat_virtuel.dto.ObjectifReqDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.ObjectifResDTO;
 import com.logonedigital.pi_mentorat_virtuel.entities.Objectif;
-import com.logonedigital.pi_mentorat_virtuel.entities.PlanOrientation;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
 
 public interface ObjectifService {
 
-    Objectif addObjectif(Objectif objectif);
+    ObjectifResDTO addObjectif(ObjectifReqDTO objectifReqDTO);
 
     List<Objectif> getAllObjectif();
 
-    //Page<PlanOrientation> getObjectifs(int offset, int pageSize);
+    Page<ObjectifResDTO> getObjectifs(int offset, int pageSize);
 
     Objectif getObjectifById(Integer objectifid);
 
