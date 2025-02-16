@@ -24,4 +24,7 @@ public class EmailSender {
         javaMailSender.send(message);
 
     }
+
+    public void sendSimpleMail(String to, String from, String subject, String body) {
+    }
 }
