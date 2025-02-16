@@ -1,21 +1,15 @@
 package com.logonedigital.pi_mentorat_virtuel.services;
 
-import com.logonedigital.pi_mentorat_virtuel.Exception.ResourceExistException;
-import com.logonedigital.pi_mentorat_virtuel.Exception.ResourceNotFoundException;
+import com.logonedigital.pi_mentorat_virtuel.exception.ResourceNotFoundException;
 import com.logonedigital.pi_mentorat_virtuel.Mapper.CategorieMapper;
 import com.logonedigital.pi_mentorat_virtuel.dto.CategorieReqDTO;
 import com.logonedigital.pi_mentorat_virtuel.dto.CategorieRespDTO;
-<<<<<<< HEAD
-import com.logonedigital.pi_mentorat_virtuel.entities.Categrorie;
-=======
 import com.logonedigital.pi_mentorat_virtuel.entities.Categorie;
-import com.logonedigital.pi_mentorat_virtuel.entities.Categorie;
-import com.logonedigital.pi_mentorat_virtuel.entities.Commentaire;
->>>>>>> herve
 import com.logonedigital.pi_mentorat_virtuel.repository.CategorieRepo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -35,69 +29,45 @@ public class CategorieServiceImpl implements CategorieService{
 
     @Override
     public CategorieRespDTO addCategorie(CategorieReqDTO categorieReqDTO) {
-<<<<<<< HEAD
-        Categrorie categrorie = categorieMapper.toEntity(categorieReqDTO);
-
-        Categrorie addCategorie = categorieRepo.save(categrorie);
-=======
-        Categorie categorie = categorieMapper.toEntity(categorieReqDTO);
-
-        Categorie addCategorie = categorieRepo.save(categorie);
->>>>>>> herve
+        Categorie categrorie = categorieMapper.toEntity(categorieReqDTO);
+        Categorie addCategorie = categorieRepo.save(categrorie);
 
         return categorieMapper.toDto(addCategorie);
     }
 
     @Override
-    public List<Categrorie> getAllCategorie() {
+    public List<Categorie> getAllCategorie() {
         return this.categorieRepo.findAll();
     }
 
     @Override
-<<<<<<< HEAD
-    public Page<Categrorie> getsPost(int page, int size) {
-        Pageable pageable = PageRequest.of(page, size);
-        return this.categorieRepo.findAll(pageable);
-    }
-
-    @Override
-    public Categrorie getCategorieById(Integer categorieId) {
-      return this.categorieRepo.findById(categorieId).
-              orElseThrow(()->new ResourceExistException("category isn't exist!!"));
-    }
-    @Override
-    public Categrorie updateCategorie(Categrorie categrorie, Integer categorieId) {
-
-        Optional<Categrorie> categrorieToEdit = this.categorieRepo.findById(categorieId);
-=======
     public Page<CategorieRespDTO> getsCategorie(int offset, int pageSize) {
-        return this.categorieRepo.findAll(PageRequest.of(offset, pageSize,Sort.by(Sort.Direction.DESC,"dateCreation")))
+
+        return this.categorieRepo.findAll(PageRequest.of(offset, pageSize, Sort.by(Sort.Direction.DESC,"dateCreation")))
                 .map(categorie -> this.categorieMapper.toDto(categorie));
     }
 
     @Override
     public CategorieRespDTO getCategorieById(Integer categorieId) {
-        Categorie categorie = categorieRepo.findById(categorieId)
-                .orElseThrow(()-> new ResourceNotFoundException("comment not found!!"));
-        return categorieMapper.toDto(categorie);
+
+        Categorie categrorie = categorieRepo.findById(categorieId)
+                .orElseThrow(()-> new ResourceNotFoundException("category not found!!"));
+        return categorieMapper.toDto(categrorie);
     }
-
-
     @Override
-    public Categorie updateCategorie(Categorie categrorie, Integer categorieId) {
+    public Categorie updateCategorie(Categorie categorie, Integer categorieId) {
 
-        Optional<Categorie> categrorieToEdit = this.categorieRepo.findById(categorieId);
->>>>>>> herve
-        if (categrorieToEdit.isEmpty())
+        Optional<Categorie> categorieToEdit = this.categorieRepo.findById(categorieId);
+        if (categorieToEdit.isEmpty())
 
             throw new ResourceNotFoundException("category not found!!");
-        if (categrorie.getNom()!=null)
-            categrorieToEdit.get().setNom(categrorie.getNom());
-        if (categrorie.getDescription()!=null)
-            categrorieToEdit.get().setDescription(categrorie.getDescription());
-        categrorieToEdit.get().setDateModification(LocalDateTime.now());
+        if (categorie.getNom()!=null)
+            categorieToEdit.get().setNom(categorie.getNom());
+        if (categorie.getDescription()!=null)
+            categorieToEdit.get().setDescription(categorie.getDescription());
+        categorieToEdit.get().setDateModification(LocalDateTime.now());
 
-        return this.categorieRepo.saveAndFlush(categrorieToEdit.get());
+        return this.categorieRepo.saveAndFlush(categorieToEdit.get());
     }
 
     @Override
