@@ -9,11 +9,10 @@ import com.logonedigital.pi_mentorat_virtuel.service.Rdv.RdvService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import static org.antlr.v4.runtime.tree.xpath.XPath.findAll;
 
 @RestController
 public class RdvController {
@@ -29,10 +28,10 @@ public class RdvController {
     }
     @GetMapping(path = "rdv/get_all")
     public String getAllRDV(@RequestParam(defaultValue = "0") int page,  // Page par défaut
-                                               @RequestParam(defaultValue = "5") int size, // Taille de la page par défaut
-                                               @RequestParam(defaultValue = "debutDuRDV") String sort,  // Critère de tri par défaut
-                                               @RequestParam(defaultValue = "asc") String dir,    // Direction du tri par défaut
-                                               Model model) {
+                            @RequestParam(defaultValue = "5") int size, // Taille de la page par défaut
+                            @RequestParam(defaultValue = "debutDuRDV") String sort,  // Critère de tri par défaut
+                            @RequestParam(defaultValue = "asc") String dir,    // Direction du tri par défaut
+                            Model model, Pageable Pageable) {
 
 
         Sort.Direction sortDirection = dir.equalsIgnoreCase("asc") ? Sort.Direction.ASC : Sort.Direction.DESC;
@@ -41,7 +40,7 @@ public class RdvController {
         // Créer un objet Pageable pour la pagination et le tri
         PageRequest pageable = PageRequest.of(page, size, sortObj);
 
-
+       // Page<RDV> rdvPage = RdvRepo.findAll(pageable);
 
 
         // Ajouter les résultats et les informations de pagination au modèle

@@ -37,4 +37,8 @@ public class Activation implements Serializable {
     }
     @OneToOne(cascade = CascadeType.ALL)
     private Mentore mentore;
+
+    public MentoreReqDTO getMentore() {
+        return null;
+    }
 }

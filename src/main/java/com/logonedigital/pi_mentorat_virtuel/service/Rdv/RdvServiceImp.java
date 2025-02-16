@@ -13,6 +13,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -41,7 +43,9 @@ private final RdvMapper rdvMapper;
                 .map(customer -> this.rdvMapper.fromRDV(rdv));
     }
 
-
+   // public List<RDV> searchrdv(String clientName, LocalDate dateFrom, LocalDate dateTo, String serviceType, String status) {
+     //   return rdvRepo.searchrdv(clientName, dateFrom, dateTo, serviceType, status);
+    //}
 
     @Override
     public RDV getRDVById(Integer rdvId) {
