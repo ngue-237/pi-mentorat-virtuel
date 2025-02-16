@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class LocationController {
+public class
+LocationController {
 
     public final LocationService locationService;
 
