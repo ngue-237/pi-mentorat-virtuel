@@ -1,4 +1,4 @@
-package com.logonedigital.pi_mentorat_virtuel.service.Mentore;
+package com.logonedigital.pi_mentorat_virtuel.services.Mentore;
 
 import com.logonedigital.pi_mentorat_virtuel.dto.MentoreReqDTO;
 import com.logonedigital.pi_mentorat_virtuel.dto.MentoreRespDTO;

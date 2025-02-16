@@ -1,7 +1,7 @@
-package com.logonedigital.pi_mentorat_virtuel.service.Location;
+package com.logonedigital.pi_mentorat_virtuel.services.Location;
 
-import com.logonedigital.pi_mentorat_virtuel.Exception.ResourceNotFoundException;
-import com.logonedigital.pi_mentorat_virtuel.Mapper.MentoreMapper;
+import com.logonedigital.pi_mentorat_virtuel.exception.ResourceNotFoundException;
+import com.logonedigital.pi_mentorat_virtuel.mapper.MentoreMapper;
 import com.logonedigital.pi_mentorat_virtuel.dto.LocationReqDTO;
 import com.logonedigital.pi_mentorat_virtuel.dto.LocationRespDTO;
 import com.logonedigital.pi_mentorat_virtuel.entities.Location;

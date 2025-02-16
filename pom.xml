@@ -41,9 +41,14 @@
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+<<<<<<< HEAD
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
 
+=======
+			<artifactId>spring-boot-starter-websocket</artifactId>
+		</dependency>
+>>>>>>> origin/main
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>

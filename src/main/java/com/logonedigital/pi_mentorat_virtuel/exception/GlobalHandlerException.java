@@ -1,4 +1,4 @@
-package com.logonedigital.pi_mentorat_virtuel.Exception;
+package com.logonedigital.pi_mentorat_virtuel.exception;
 
 
 import com.logonedigital.pi_mentorat_virtuel.dto.ErrorMessage;

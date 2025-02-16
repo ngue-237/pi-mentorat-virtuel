@@ -1,4 +1,4 @@
-package com.logonedigital.pi_mentorat_virtuel.service.mailService;
+package com.logonedigital.pi_mentorat_virtuel.services.mailService;
 
 public interface MailService {
 

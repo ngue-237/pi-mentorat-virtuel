@@ -1,6 +1,6 @@
 package com.logonedigital.pi_mentorat_virtuel.coltroller;
 
-import com.logonedigital.pi_mentorat_virtuel.service.mailService.MailService;
+import com.logonedigital.pi_mentorat_virtuel.services.mailService.MailService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
