@@ -30,6 +30,13 @@ public class LocationServiceImpl implements LocationService {
         this.mentoreMapper = mentoreMapper;
     }
 
+    @Override
+    public Location addLocation(Location location) {
+        location.setCreatedAt(new Date());
+        location.setStatus(true);
+        return this.locationRepo.saveAndFlush(location);
+    }
+
     public LocationRespDTO addLocation(@Valid LocationReqDTO locationReqDTO) {
         Location location = this.mentoreMapper.fromLocationReqDTO(locationReqDTO);
         location.setCreatedAt(new Date());

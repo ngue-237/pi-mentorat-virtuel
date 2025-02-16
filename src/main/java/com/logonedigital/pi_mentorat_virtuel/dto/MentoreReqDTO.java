@@ -3,8 +3,8 @@ package com.logonedigital.pi_mentorat_virtuel.dto;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
+import lombok.Getter;
 import org.hibernate.validator.constraints.Length;
-
 
 public record MentoreReqDTO (
     @Column(nullable = false)
@@ -25,5 +25,9 @@ public record MentoreReqDTO (
     @Override
     public String email() {
         return email;
+    }
+
+    public LocationReqDTO getLocationReqDTO() {
+        return locationReqDTO;
     }
 }
