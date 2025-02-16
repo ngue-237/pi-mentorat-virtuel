@@ -1,4 +1,4 @@
-package com.logonedigital.pi_mentorat_virtuel.Mapper;
+package com.logonedigital.pi_mentorat_virtuel.mapper;
 
 import com.logonedigital.pi_mentorat_virtuel.dto.LocationReqDTO;
 
