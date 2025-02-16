@@ -1,4 +1,4 @@
-package com.logonedigital.pi_mentorat_virtuel.coltroller;
+package com.logonedigital.pi_mentorat_virtuel.controller;
 
 import com.logonedigital.pi_mentorat_virtuel.entities.FeedBack;
 import com.logonedigital.pi_mentorat_virtuel.service.FeedBack.FeedBackService;

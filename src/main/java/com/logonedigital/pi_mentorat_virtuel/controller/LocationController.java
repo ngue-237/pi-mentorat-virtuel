@@ -1,4 +1,4 @@
-package com.logonedigital.pi_mentorat_virtuel.coltroller;
+package com.logonedigital.pi_mentorat_virtuel.controller;
 
 import com.logonedigital.pi_mentorat_virtuel.dto.LocationReqDTO;
 import com.logonedigital.pi_mentorat_virtuel.dto.LocationRespDTO;
