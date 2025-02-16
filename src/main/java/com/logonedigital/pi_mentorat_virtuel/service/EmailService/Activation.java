@@ -1,7 +1,8 @@
 package com.logonedigital.pi_mentorat_virtuel.service.EmailService;
 
 import com.logonedigital.pi_mentorat_virtuel.dto.MentoreReqDTO;
-import com.logonedigital.pi_mentorat_virtuel.entities.Mentore;
+
+import com.logonedigital.pi_mentorat_virtuel.entities.Mentor;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

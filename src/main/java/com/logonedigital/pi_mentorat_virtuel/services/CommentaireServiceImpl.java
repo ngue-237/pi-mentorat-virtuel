@@ -1,7 +1,7 @@
 package com.logonedigital.pi_mentorat_virtuel.services;
 
-import com.logonedigital.pi_mentorat_virtuel.Exception.ResourceExistException;
-import com.logonedigital.pi_mentorat_virtuel.Exception.ResourceNotFoundException;
+import com.logonedigital.pi_mentorat_virtuel.exception.ResourceExistException;
+import com.logonedigital.pi_mentorat_virtuel.exception.ResourceNotFoundException;
 import com.logonedigital.pi_mentorat_virtuel.Mapper.CommentaireMapper;
 import com.logonedigital.pi_mentorat_virtuel.dto.CommentaireReqDTO;
 import com.logonedigital.pi_mentorat_virtuel.dto.CommentaireRespDTO;
