@@ -1,10 +1,13 @@
 package com.logonedigital.pi_mentorat_virtuel.services;
 
+import com.logonedigital.pi_mentorat_virtuel.Exception.ResourceExistException;
 import com.logonedigital.pi_mentorat_virtuel.Exception.ResourceNotFoundException;
 import com.logonedigital.pi_mentorat_virtuel.Mapper.CategorieMapper;
 import com.logonedigital.pi_mentorat_virtuel.dto.CategorieReqDTO;
 import com.logonedigital.pi_mentorat_virtuel.dto.CategorieRespDTO;
 import com.logonedigital.pi_mentorat_virtuel.entities.Categorie;
+import com.logonedigital.pi_mentorat_virtuel.entities.Categorie;
+import com.logonedigital.pi_mentorat_virtuel.entities.Commentaire;
 import com.logonedigital.pi_mentorat_virtuel.repository.CategorieRepo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -29,9 +32,9 @@ public class CategorieServiceImpl implements CategorieService{
 
     @Override
     public CategorieRespDTO addCategorie(CategorieReqDTO categorieReqDTO) {
-        Categorie categrorie = categorieMapper.toEntity(categorieReqDTO);
+        Categorie categorie = categorieMapper.toEntity(categorieReqDTO);
 
-        Categorie addCategorie = categorieRepo.save(categrorie);
+        Categorie addCategorie = categorieRepo.save(categorie);
 
         return categorieMapper.toDto(addCategorie);
     }
@@ -43,32 +46,32 @@ public class CategorieServiceImpl implements CategorieService{
 
     @Override
     public Page<CategorieRespDTO> getsCategorie(int offset, int pageSize) {
-
-        return this.categorieRepo.findAll(PageRequest.of(offset, pageSize, Sort.by(Sort.Direction.DESC,"dateCreation")))
+        return this.categorieRepo.findAll(PageRequest.of(offset, pageSize,Sort.by(Sort.Direction.DESC,"dateCreation")))
                 .map(categorie -> this.categorieMapper.toDto(categorie));
     }
 
     @Override
     public CategorieRespDTO getCategorieById(Integer categorieId) {
-
-        Categorie categrorie = categorieRepo.findById(categorieId)
-                .orElseThrow(()-> new ResourceNotFoundException("category not found!!"));
-        return categorieMapper.toDto(categrorie);
+        Categorie categorie = categorieRepo.findById(categorieId)
+                .orElseThrow(()-> new ResourceNotFoundException("comment not found!!"));
+        return categorieMapper.toDto(categorie);
     }
-    @Override
-    public Categorie updateCategorie(Categorie categorie, Integer categorieId) {
 
-        Optional<Categorie> categorieToEdit = this.categorieRepo.findById(categorieId);
-        if (categorieToEdit.isEmpty())
+
+    @Override
+    public Categorie updateCategorie(Categorie categrorie, Integer categorieId) {
+
+        Optional<Categorie> categrorieToEdit = this.categorieRepo.findById(categorieId);
+        if (categrorieToEdit.isEmpty())
 
             throw new ResourceNotFoundException("category not found!!");
-        if (categorie.getNom()!=null)
-            categorieToEdit.get().setNom(categorie.getNom());
-        if (categorie.getDescription()!=null)
-            categorieToEdit.get().setDescription(categorie.getDescription());
-        categorieToEdit.get().setDateModification(LocalDateTime.now());
+        if (categrorie.getNom()!=null)
+            categrorieToEdit.get().setNom(categrorie.getNom());
+        if (categrorie.getDescription()!=null)
+            categrorieToEdit.get().setDescription(categrorie.getDescription());
+        categrorieToEdit.get().setDateModification(LocalDateTime.now());
 
-        return this.categorieRepo.saveAndFlush(categorieToEdit.get());
+        return this.categorieRepo.saveAndFlush(categrorieToEdit.get());
     }
 
     @Override
