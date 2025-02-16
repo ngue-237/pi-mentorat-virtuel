@@ -59,6 +59,14 @@ public class MentoreController {
                 .body(this.mentoreService.getMentoreByEmail(email));
     }
 
+    @GetMapping(path = "mentores/get_by_fistname_lastname{firstname}{lastname}")
+    public ResponseEntity<Mentore> getMentoreByFirstnameAndLastname(@PathVariable String firstname, @PathVariable String lastname){
+
+        return ResponseEntity
+                .status(200)
+                .body(this.mentoreService.getMentoreByFirstnameAndLastname(firstname, lastname));
+    }
+
     @PutMapping(path = "mentores/update_by_id/{mentoreId}")
     public ResponseEntity<Mentore> updateMentoreById(@PathVariable Integer mentoreId, @Valid @RequestBody  Mentore mentore){
 

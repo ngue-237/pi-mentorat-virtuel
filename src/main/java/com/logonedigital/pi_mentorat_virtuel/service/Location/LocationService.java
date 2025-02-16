@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import java.util.List;
 
 public interface LocationService {
+    Location addLocation(Location location) ;
     LocationRespDTO addLocation(@Valid LocationReqDTO locationReqDTO);
     List<Location> getLocations();
     Page<LocationRespDTO> getLocations(int offset, int pageSize);

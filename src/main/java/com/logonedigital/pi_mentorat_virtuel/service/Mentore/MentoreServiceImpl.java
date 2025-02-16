@@ -46,12 +46,10 @@ public class MentoreServiceImpl implements MentoreService {
         mentore.setCreatedAt(new Date());
         mentore.setStatus(true);
         //LIAISON DES DONNES
-        Location location= this.locationRepo
-                .findById(mentoreReqDTO.locationId())
-                .orElseThrow(()-> new ResourceNotFoundException("Location not found"));
+        Location location= this.mentoreMapper
+                .fromLocationReqDTO(mentoreReqDTO.getLocationReqDTO());
 
-        mentore.setLocation(location);
-
+        mentore.setLocation(this.locationService.addLocation(location));
         
 
         return this.mentoreMapper.fromMentore(this.mentoreRepo.save(mentore)) ;
@@ -85,6 +83,15 @@ public class MentoreServiceImpl implements MentoreService {
                 ()-> new ResourceNotFoundException("Mentoré not found !")
         );
     }
+
+    @Override
+    public Mentore getMentoreByFirstnameAndLastname(String firstname, String lastname) {
+        return  this.mentoreRepo.findByFirstnameAndLastname(firstname, lastname).orElseThrow(
+                ()-> new ResourceNotFoundException("Mentoré not found !")
+        );
+
+    }
+
 
     @Override
     public Mentore updateMentore(Mentore mentore, Integer mentoreId) {

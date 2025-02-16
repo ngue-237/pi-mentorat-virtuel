@@ -15,6 +15,7 @@ public interface MentoreService {
     Page<MentoreRespDTO> getMentores(int offset, int pageSize);
     Mentore getMentoreById(Integer mentoreId);
     Mentore getMentoreByEmail(String email);
+    Mentore getMentoreByFirstnameAndLastname(String firstname, String lastname);
     Mentore updateMentore(Mentore mentore, Integer mentoreId);
     void deleteMentore(Integer mentoreId);
 }
