@@ -22,6 +22,6 @@ public interface ObjectifService {
     void deleteObjectifById(Integer id);
 
 
-
-
+  Objectif getObjectifByLibelle(String libelle);
 }
+

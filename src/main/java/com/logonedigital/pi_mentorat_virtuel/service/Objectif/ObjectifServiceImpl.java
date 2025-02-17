@@ -75,4 +75,11 @@ public class  ObjectifServiceImpl implements ObjectifService {
                 .orElseThrow(()-> new ResourceNotFoundException("objectif not found!"));
         this.objectifRepo.delete(objectif);
     }
+
+   @Override
+    public Objectif getObjectifByLibelle(String libelle) {
+
+    return  this.objectifRepo.findObjectifByLibelle(libelle)
+                .orElseThrow(()->new ResourceNotFoundException("objectif not found"));
+    }
 }
