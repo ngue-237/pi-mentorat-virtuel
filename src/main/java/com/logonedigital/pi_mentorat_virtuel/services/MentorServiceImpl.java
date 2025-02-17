@@ -3,6 +3,9 @@ package com.logonedigital.pi_mentorat_virtuel.services;
 import com.logonedigital.pi_mentorat_virtuel.Exception.ResourceNotFoundException;
 import com.logonedigital.pi_mentorat_virtuel.entities.Mentor;
 import com.logonedigital.pi_mentorat_virtuel.repository.MentorRepo;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,10 +31,24 @@ public class MentorServiceImpl implements MentorService{
     }
 
     @Override
+    public Mentor getMentorByNom(String nom) {
+
+        Optional<Mentor> mentor = this.mentorRepo.findByNom(nom);
+        if (mentor.isEmpty())
+            throw new ResourceNotFoundException("mentor not found");
+        return mentor.get();
+    }
+    @Override
+    public Page<Mentor> getMentor(int offset, int pageSize) {
+        Pageable pageable = PageRequest.of(offset,pageSize);
+        return this.mentorRepo.findAll(pageable);
+    }
+
+    @Override
     public Mentor getMentorById(Integer mentorId) {
         Optional<Mentor>mentor = this.mentorRepo.findById(mentorId);
         if (mentor .isEmpty())
-            throw new RuntimeException("le mentor avc cette id n'existe pas");
+            throw new RuntimeException("le mentor avec cette id n'existe pas");
 
         return mentor.get();
     }
@@ -48,15 +65,11 @@ public class MentorServiceImpl implements MentorService{
             mentorToEdit.get().setPrenom(mentor.getPrenom());
         return this.mentorRepo.saveAndFlush(mentorToEdit.get());
 
-
     }
 
     @Override
     public void deleteMentor(Integer mentorId) {
         this.mentorRepo.delete(this.mentorRepo.findById(mentorId)
                 .orElseThrow(()-> new ResourceNotFoundException("mentor not found")));
-
-
-
     }
 }

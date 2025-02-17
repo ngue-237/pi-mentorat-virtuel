@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Length;
 
 import java.util.Date;
 
@@ -20,7 +21,11 @@ import java.util.Date;
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Integer mentorId;
         private String field;
+        @NotEmpty(message = "ce champs ne doit pas être vide")
+        @Length(min = 3, message = "ce champs doit contenir au moin 3 caractère")
         private String nom;
+        @NotEmpty(message = "ce champs ne doit pas être vide")
+        @Length(min = 3, message = "ce champs doit contenir au moin 3 caractère")
         private String prenom;
         private String email;
         private String bibliography;

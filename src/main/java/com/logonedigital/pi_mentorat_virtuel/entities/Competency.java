@@ -6,9 +6,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Length;
 
 
-    @Entity
+@Entity
     @AllArgsConstructor
     @NoArgsConstructor
     @Getter
@@ -20,6 +21,8 @@ import lombok.Setter;
         private Integer CompetencyId;
         @NotEmpty(message = "le nom est obligatoire")
         @Column(nullable = false)
+        @NotEmpty(message = "ce champs ne doit pas être vide")
+        @Length(min = 3, message = "ce champs doit contenir au moin 3 caractère")
         private String name;
         private String description;
 

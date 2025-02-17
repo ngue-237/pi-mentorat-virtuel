@@ -7,6 +7,8 @@ import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class CompetencyController {
     private final CompetencyService competencyService;
@@ -28,6 +30,16 @@ public class CompetencyController {
                .status(200)
                .body(this.competencyService.getCompetencyById(competencyId));
 
+    }
+    @GetMapping(path = "competency/get_all competency")
+    public ResponseEntity<List<Competency>> getAllCompetency(){
+        return ResponseEntity
+                .ok(this.competencyService.getAllCompetency());
+    }
+    @PutMapping(path = "competency/update_by_id/{competency}")
+    public ResponseEntity<Competency> updateCompetencyById( @Valid @RequestBody Competency competency, @PathVariable Integer competencyId){
+        return ResponseEntity
+                .ok(this.competencyService.updateCompetency(competency, competencyId));
     }
     @DeleteMapping(path = "competency/delete_by_id/{competencyId}")
     public ResponseEntity<String> deleteLocationById(@PathVariable Integer competencyId){

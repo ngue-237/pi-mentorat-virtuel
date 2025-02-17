@@ -1,5 +1,6 @@
 package com.logonedigital.pi_mentorat_virtuel.services;
 
+import com.logonedigital.pi_mentorat_virtuel.Exception.ResourceNotFoundException;
 import com.logonedigital.pi_mentorat_virtuel.entities.Competency;
 import com.logonedigital.pi_mentorat_virtuel.repository.CompetencyRepo;
 import org.springframework.stereotype.Service;
@@ -34,9 +35,13 @@ public class CompetencyServiceImpl implements CompetencyService{
 
     @Override
     public Competency updateCompetency(Competency competency, Integer competencyId) {
-        this.competencyRepo.deleteById(competencyId);
+        Optional<Competency> competencyToEdit = this.competencyRepo.findById(competencyId);
+        if (competencyToEdit.isEmpty())
+            throw new ResourceNotFoundException("competency not found");
+        if (competency.getName()!=null)
+            competencyToEdit.get().setName(competency.getName());
+        return this.competencyRepo.saveAndFlush(competencyToEdit.get());
 
-        return competency;
     }
 
     @Override
