@@ -1,5 +1,6 @@
 package com.logonedigital.pi_mentorat_virtuel;
 
+<<<<<<< HEAD
 
 import lombok.*;
 import org.hibernate.annotations.IdGeneratorType;
@@ -55,4 +56,12 @@ public class ErrorMessage {
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }
+=======
+import java.util.Date;
+
+public record ErrorMessage(int status,
+                           String msg,
+                           String error,
+                           Date timestamp) {
+>>>>>>> Julien
 }
