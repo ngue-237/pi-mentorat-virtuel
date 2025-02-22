@@ -1,4 +1,4 @@
-package com.logonedigital.pi_mentorat_virtuel.services.sujet;
+package com.logonedigital.pi_mentorat_virtuel.services.suje;
 
 import com.logonedigital.pi_mentorat_virtuel.entities.User;
 import com.logonedigital.pi_mentorat_virtuel.repositories.UserRepo;
