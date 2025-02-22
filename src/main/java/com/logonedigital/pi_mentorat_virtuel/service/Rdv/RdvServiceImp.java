@@ -4,17 +4,18 @@ import com.logonedigital.pi_mentorat_virtuel.Exception.ResourceNotFoundException
 import com.logonedigital.pi_mentorat_virtuel.Mapper.RdvMapper;
 import com.logonedigital.pi_mentorat_virtuel.dto.RdvReqDto;
 import com.logonedigital.pi_mentorat_virtuel.dto.RdvResDto;
-import com.logonedigital.pi_mentorat_virtuel.entities.FeedBack;
 import com.logonedigital.pi_mentorat_virtuel.entities.RDV;
 import com.logonedigital.pi_mentorat_virtuel.repositories.RdvRepo;
 import com.logonedigital.pi_mentorat_virtuel.service.FeedBack.FeedBackService;
+import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
-import java.time.LocalDate;
-import java.util.List;
+import java.util.Date;
 import java.util.Optional;
 
 @Service
@@ -22,6 +23,11 @@ public class RdvServiceImp implements RdvService{
 private final RdvRepo rdvRepo;
 private final FeedBackService feedBackService;
 private final RdvMapper rdvMapper;
+    private String visioconference;
+    private Date debutdurdv;
+    private Date duree;
+    private String etat;
+
     public RdvServiceImp(RdvRepo rdvRepo, FeedBackService feedBackService, RdvMapper rdvMapper) {
 
         this.rdvRepo = rdvRepo;
@@ -32,18 +38,43 @@ private final RdvMapper rdvMapper;
 
     @Override
     public RdvResDto addRdv(RdvReqDto rdvReqDto) {
-     RDV rdv= this.rdvMapper.fromRdvReqDto(rdvReqDto);
-        FeedBack feedBack= this.rdvMapper.fromFeedBackReqDTO(rdvReqDto.getFeedBackReqDTO);
-        return this.rdvMapper.fromRDV(this.rdvRepo.save(rdv));
+      //  Optional<RDV> rdvExist= this.rdvRepo.findRDVByVisioconference(rdvReqDto.getVisioconference());
+
+      //  RdvResDto rdvResDto = this.rdvMapper.fromRDV(this.rdvRepo.save(rdvReqDto));
+//        return rdvResDto;
+        RDV rdv= this.rdvMapper.fromRdvReqDto(rdvReqDto);
+
+        return RdvMapper.fromRDV(this.rdvRepo.saveAndFlush(rdv));
     }
 
     @Override
     public Page<RdvResDto> getrdvs(int offset, int pageSize, RDV rdv) {
         return this.rdvRepo.findAll(PageRequest.of(offset, pageSize, Sort.by(Sort.Direction.DESC, "createdAt")))
-                .map(customer -> this.rdvMapper.fromRDV(rdv));
+                .map(customer -> RdvMapper.fromRDV(rdv));
     }
 
-   // public List<RDV> searchrdv(String clientName, LocalDate dateFrom, LocalDate dateTo, String serviceType, String status) {
+    @Override
+    public RDV findRdvByVisioconference(String visioconference) {
+        Optional<RDV> rdv = this.rdvRepo.findRDVByVisioconference(visioconference);
+        if (visioconference.isEmpty())
+            throw new ResourceNotFoundException("rdv not found");
+        return rdv.get();
+    }
+
+   /* @Override
+    public RDV searchrdv(String visioconference, Date debutdurdv, Date duree, String etat) {
+       Optional<RDV> rdv=this.rdvRepo.searchrdv(visioconference,debutdurdv,duree,etat);
+        this.visioconference = visioconference;
+        this.debutdurdv = debutdurdv;
+        this.duree = duree;
+        this.etat = etat;
+        if (rdv.isEmpty())
+            throw new ResourceNotFoundException("rdv not found");
+        return rdv.get();
+       // return rdvRepo.searchrdv( visioconference,debutdurdv,duree,etat);
+    }*/
+
+    // public List<RDV> searchrdv(String clientName, LocalDate dateFrom, LocalDate dateTo, String serviceType, String status) {
      //   return rdvRepo.searchrdv(clientName, dateFrom, dateTo, serviceType, status);
     //}
 

@@ -1,6 +1,7 @@
 package com.logonedigital.pi_mentorat_virtuel.service.FeedBack;
 
 import com.logonedigital.pi_mentorat_virtuel.Exception.ResourceNotFoundException;
+import com.logonedigital.pi_mentorat_virtuel.Mapper.FeedBackMapper;
 import com.logonedigital.pi_mentorat_virtuel.entities.FeedBack;
 import com.logonedigital.pi_mentorat_virtuel.repositories.FeedBackRepo;
 import org.springframework.stereotype.Service;
@@ -11,9 +12,10 @@ import java.util.Optional;
 @Service
 public class FeedBackServiceImp implements FeedBackService{
     public final FeedBackRepo feedBackRepo;
-
-    public FeedBackServiceImp(FeedBackRepo feedBackRepo) {
+public final FeedBackMapper feedBackMapper;
+    public FeedBackServiceImp(FeedBackRepo feedBackRepo, FeedBackMapper feedBackMapper) {
         this.feedBackRepo = feedBackRepo;
+        this.feedBackMapper = feedBackMapper;
     }
 
 

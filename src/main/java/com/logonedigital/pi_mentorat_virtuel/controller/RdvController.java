@@ -20,7 +20,7 @@ public class RdvController {
         this.rdvService = rdvService;
     }
     @PostMapping(path = "rdv/add")
-    public ResponseEntity<RdvResDto> addRDV(@Valid @RequestBody RdvReqDto rdvReqDto){
+    public ResponseEntity<RdvResDto> addRDV( @RequestBody RdvReqDto rdvReqDto){
         return  ResponseEntity
                 .ok(this.rdvService.addRdv(rdvReqDto));
     }
@@ -53,7 +53,11 @@ public class RdvController {
                 .status(200)
                 .body(this.rdvService.getRDVById(rdvId));
     }
-
+    @GetMapping(path = "rdv/get-rdv-visioconference/{visioconference}")
+    public ResponseEntity<RDV> getFeedBackByCommentaire(@PathVariable String visioconference){
+        return ResponseEntity
+                .ok(this.rdvService.findRdvByVisioconference(visioconference));
+    }
     @PutMapping(path = "rdv/update_by_id/{rdvId}")
     public ResponseEntity<RDV> updateRDVById(@PathVariable Integer rdvId, @Valid @RequestBody RDV rdv){
 

@@ -14,7 +14,7 @@ import java.util.List;
 @Getter
 @Setter
 public class RDV {
-    @jakarta.persistence.Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
     private Timestamp debutduRDV;
@@ -27,6 +27,14 @@ private String etat;
 
     public void setEtat(String etat) {
         this.etat = etat;
+    }
+
+    public Integer getId() {
+        return Id;
+    }
+
+    public void setId(Integer id) {
+        Id = id;
     }
 
     public String getVisioconference() {

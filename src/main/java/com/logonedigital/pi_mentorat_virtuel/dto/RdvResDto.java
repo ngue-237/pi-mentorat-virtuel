@@ -2,8 +2,12 @@ package com.logonedigital.pi_mentorat_virtuel.dto;
 
 import java.util.Date;
 
-public record RdvResDto(Date debutduRDV,
+public record RdvResDto(Integer id,
                         Date duree,
-                        String visioconference,
-                       String etat) {
-}
+                        Date debutdurdv,
+                        String visioconference
+                        ) {
+
+
+    }
+

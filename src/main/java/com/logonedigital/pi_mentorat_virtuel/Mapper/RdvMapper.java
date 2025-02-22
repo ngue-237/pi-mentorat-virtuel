@@ -16,7 +16,8 @@ public interface RdvMapper {
 FeedBack fromFeedBackReqDTO(FeedBackReqDTO feedBackReqDTO);
 
     @Mapping(source = "feedBack", target = "feedBackResDTO")
-    default RdvResDto fromRDV(RDV rdv) {
+   static RdvResDto fromRDV(RDV rdv) {
+       // return new RdvResDto();
         return null;
     }
 }

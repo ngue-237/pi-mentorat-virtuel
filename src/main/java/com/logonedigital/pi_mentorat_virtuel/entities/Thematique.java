@@ -18,4 +18,12 @@ public class Thematique {
     private String libelle;
     @OneToOne
     private RDV rdv;
+
+    public @Length(min = 3, max = 50, message = "libelle must have atleast 3 characters and at most 50 characters") String getLibelle() {
+        return libelle;
+    }
+
+    public void setLibelle(@Length String libelle) {
+        this.libelle = libelle;
+    }
 }
