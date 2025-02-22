@@ -49,6 +49,6 @@ public class MentorController {
     public ResponseEntity<String> deleteMentorById(@PathVariable Integer mentor){
        this.mentorService.deleteMentor(mentor);
        return ResponseEntity
-               .ok("le mentor à été supprimer");
+               .ok("le mentor à été supprimer avec succès");
     }
 }
