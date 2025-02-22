@@ -1,6 +1,6 @@
 package com.logonedigital.pi_mentorat_virtuel.service.Rdv;
 
-import com.logonedigital.pi_mentorat_virtuel.Exception.ResourceNotFoundException;
+import com.logonedigital.pi_mentorat_virtuel.exception.ResourceNotFoundException;
 import com.logonedigital.pi_mentorat_virtuel.Mapper.RdvMapper;
 import com.logonedigital.pi_mentorat_virtuel.dto.RdvReqDto;
 import com.logonedigital.pi_mentorat_virtuel.dto.RdvResDto;
@@ -13,8 +13,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.util.List;
 import java.util.Optional;
 
 @Service

@@ -51,9 +51,9 @@ public class CategorieController {
                 .ok(this.categorieService.getAllCategorie());
     }
     @GetMapping(path = "categorie/pagination/{page}/{size}")
-    public ResponseEntity<Page<Categorie>> pagination(@PathVariable int page, @PathVariable int size){
+    public ResponseEntity<Page<CategorieRespDTO>> pagination(@PathVariable int page, @PathVariable int size){
         return ResponseEntity
-                .ok(this.categorieService.getsPost(page, size));
+                .ok(this.categorieService.getsCategorie(page, size));
     }
 
     @Operation(
@@ -65,7 +65,7 @@ public class CategorieController {
             @ApiResponse(responseCode = "404", description = "Catégorie non trouvée pour l'ID donné.")
     })
     @GetMapping(path = "categorie/get-categorie-by-id/{categorieId}")
-    public ResponseEntity<Categorie> getCategorieById(@PathVariable Integer categorieId){
+    public ResponseEntity<CategorieRespDTO> getCategorieById(@PathVariable Integer categorieId){
         return ResponseEntity
                 .ok(this.categorieService.getCategorieById(categorieId));
     }

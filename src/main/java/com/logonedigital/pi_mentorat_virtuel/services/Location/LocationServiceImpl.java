@@ -13,7 +13,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,14 +32,14 @@ public class LocationServiceImpl implements LocationService {
 
     @Override
     public Location addLocation(Location location) {
-        location.setCreatedAt(new Date());
+        location.setCreatedAt(Instant.now());
         location.setStatus(true);
         return this.locationRepo.saveAndFlush(location);
     }
 
     public LocationRespDTO addLocation(@Valid LocationReqDTO locationReqDTO) {
         Location location = this.mentoreMapper.fromLocationReqDTO(locationReqDTO);
-        location.setCreatedAt(new Date());
+        location.setCreatedAt(Instant.now());
         location.setStatus(true);
         return this.mentoreMapper.fromLocation(this.locationRepo.save(location)) ;
     }
@@ -76,7 +76,7 @@ public class LocationServiceImpl implements LocationService {
             locationToEdit.get().setStreet(location.getStreet());
         if (location.getPostalCode() != null)
             locationToEdit.get().setPostalCode(location.getPostalCode());
-        locationToEdit.get().setUpdatedAt(new Date());
+        locationToEdit.get().setUpdatedAt(Instant.now());
         //Sauvegarder les modifications
         return this.locationRepo.saveAndFlush(locationToEdit.get());
     }

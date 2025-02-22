@@ -2,7 +2,7 @@ package com.logonedigital.pi_mentorat_virtuel.service.EmailService;
 
 import com.logonedigital.pi_mentorat_virtuel.dto.MentoreReqDTO;
 
-import com.logonedigital.pi_mentorat_virtuel.entities.Mentor;
+import com.logonedigital.pi_mentorat_virtuel.entities.Mentore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -38,8 +38,9 @@ public class Activation implements Serializable {
     }
     @OneToOne(cascade = CascadeType.ALL)
     private Mentore mentore;
-
     public MentoreReqDTO getMentore() {
         return null;
     }
+
+
 }

@@ -15,11 +15,11 @@ public class EmailSender {
 
         message.setFrom("etondemiranda@gmail.com");
 
-        message.setTo(activation.getMentore().getEmail());
+        message.setTo(activation.getMentore().email());
 
         message.setSubject("Votre code d'activation");
 
-        message.setText("Bonjour Mr/Mne "+activation.getMentore().getFirstname()+" "+activation.getMentore().getLastname()+"<br>"+"Your activation code is: " + activation.getCode());
+        message.setText("Bonjour Mr/Mne "+activation.getMentore().firstname()+" "+activation.getMentore().lastname()+"<br>"+"Your activation code is: " + activation.getCode());
 
         javaMailSender.send(message);
 
