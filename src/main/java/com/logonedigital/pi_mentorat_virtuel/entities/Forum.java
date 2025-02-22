@@ -37,7 +37,7 @@ public class Forum {
     private User user;
 
     @ManyToMany
-    @JoinTable(name = "sujet_forum",
+    @JoinTable(name = "suje_forum",
             joinColumns = @JoinColumn(name = "forumId"),
             inverseJoinColumns = @JoinColumn(name = "sujetId"))
     private List<Suje> sujeForum = new ArrayList<>();

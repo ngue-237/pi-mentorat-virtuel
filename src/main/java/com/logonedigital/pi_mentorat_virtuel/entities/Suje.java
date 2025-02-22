@@ -40,7 +40,7 @@ public class Suje implements Serializable {
     private Date createdAt;
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "sujetForum")
+    @ManyToMany(mappedBy = "sujeForum")
     private List<Forum> forum = new ArrayList<>();
 
     @ManyToMany
