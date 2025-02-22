@@ -7,7 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.io.Serial;
 import java.util.Date;
 
     @Entity
@@ -16,7 +15,7 @@ import java.util.Date;
     @Getter
     @Setter
     @Table(name = "mentor")
-    public class Mentor {
+    public class Mentore {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Integer mentorId;

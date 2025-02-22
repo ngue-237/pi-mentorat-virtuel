@@ -1,6 +1,6 @@
 package com.logonedigital.pi_mentorat_virtuel.service.FeedBack;
 
-import com.logonedigital.pi_mentorat_virtuel.Exception.ResourceNotFoundException;
+import com.logonedigital.pi_mentorat_virtuel.exception.ResourceNotFoundException;
 import com.logonedigital.pi_mentorat_virtuel.entities.FeedBack;
 import com.logonedigital.pi_mentorat_virtuel.repositories.FeedBackRepo;
 import org.springframework.stereotype.Service;
