@@ -1,6 +1,7 @@
 package com.logonedigital.pi_mentorat_virtuel.entities;
 
 import jakarta.persistence.*;
+<<<<<<< HEAD
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,6 +19,17 @@ public class Location implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
+=======
+
+import java.io.Serial;
+import java.time.Instant;
+
+@Entity
+@Table(name = "locations")
+public class Location {
+    @Serial
+    private static final long serialVersionUID = 1L;
+>>>>>>> main
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer locationId;
@@ -25,11 +37,29 @@ public class Location implements Serializable {
     private Integer postalCode;
     private String street;
     @Temporal(TemporalType.DATE)
+<<<<<<< HEAD
     private Date createdAt;
     @Temporal(TemporalType.DATE)
     private Date updatedAt;
     private Boolean status;
 
+=======
+    private Instant createdAt;
+    @Temporal(TemporalType.DATE)
+    private Instant updatedAt;
+    private Boolean status;
+
+    public Location(Integer locationId, String town, Integer postalCode, String street, Instant createdAt, Instant updatedAt, Boolean status) {
+        this.locationId = locationId;
+        this.town = town;
+        this.postalCode = postalCode;
+        this.street = street;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.status = status;
+    }
+
+>>>>>>> main
     public Integer getLocationId() {
         return locationId;
     }
@@ -62,6 +92,7 @@ public class Location implements Serializable {
         this.street = street;
     }
 
+<<<<<<< HEAD
     public Date getCreatedAt() {
         return createdAt;
     }
@@ -75,6 +106,21 @@ public class Location implements Serializable {
     }
 
     public void setUpdatedAt(Date updatedAt) {
+=======
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Instant getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Instant updatedAt) {
+>>>>>>> main
         this.updatedAt = updatedAt;
     }
 

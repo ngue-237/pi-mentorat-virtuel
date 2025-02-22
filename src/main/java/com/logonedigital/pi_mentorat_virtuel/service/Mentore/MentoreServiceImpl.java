@@ -17,6 +17,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -43,7 +44,7 @@ public class MentoreServiceImpl implements MentoreService {
             throw new ResourceExistException("This email already exist !");
         //DTOS
         Mentore mentore = this.mentoreMapper.fromMentoreReqDTO(mentoreReqDTO);
-        mentore.setCreatedAt(new Date());
+        mentore.setCreatedAt(Instant.now());
         mentore.setStatus(true);
         //LIAISON DES DONNES
         Location location= this.mentoreMapper
@@ -109,7 +110,7 @@ public class MentoreServiceImpl implements MentoreService {
             mentoreToEdit.get().setPhone(mentore.getPhone());
         if(mentore.getEmail()!=null)
             mentoreToEdit.get().setEmail(mentore.getEmail());
-        mentoreToEdit.get().setUpdatedAt(new Date());
+        mentoreToEdit.get().setUpdatedAt( Instant.now());
         //Sauvegarder les modifications
         return this.mentoreRepo.saveAndFlush(mentoreToEdit.get());
     }

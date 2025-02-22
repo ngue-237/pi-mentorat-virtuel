@@ -23,11 +23,33 @@ public record MentoreReqDTO (
 
 {
     @Override
-    public String email() {
+    public @NotEmpty(message = "the email does not be Empty") @Email(message = "Your email address isn't correct") String email() {
         return email;
     }
 
     public LocationReqDTO getLocationReqDTO() {
         return locationReqDTO;
     }
+
+    @Override
+    public @Length(min = 3, max = 50, message = "firstname must have min 3 caracters and max 50 caracters") @NotEmpty(message = "This field must be fill") String firstname() {
+        return firstname;
+    }
+
+    @Override
+    public String lastname() {
+        return lastname;
+    }
+
+    @Override
+    public Integer locationId() {
+        return locationId;
+    }
+
+    @Override
+    public LocationReqDTO locationReqDTO() {
+        return locationReqDTO;
+    }
+
+
 }

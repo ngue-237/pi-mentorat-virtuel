@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class  PiMentoratVirtuelApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(PiMentoratVirtuelApplication.class, args);
+	public static void main(String[] args) { SpringApplication.run(PiMentoratVirtuelApplication.class, args);
 	}
 
 }
