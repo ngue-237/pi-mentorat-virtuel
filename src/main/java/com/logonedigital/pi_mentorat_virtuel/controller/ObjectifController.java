@@ -64,4 +64,12 @@ public class ObjectifController  {
                 .status(202)
                 .body("Deleted successfully!");
     }
+    @GetMapping(path = "objectif/get-objectif-libelle/{libelle}")
+    public ResponseEntity<Objectif> getObjectifBylibelle(@PathVariable String libelle) {
+
+      return ResponseEntity
+             .status(200)
+             .body(this.objectifService.getObjectifByLibelle(libelle));
+    }
+
 }
