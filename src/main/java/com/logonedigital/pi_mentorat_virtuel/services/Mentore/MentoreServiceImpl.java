@@ -86,7 +86,7 @@ public class MentoreServiceImpl implements MentoreService {
 
     @Override
     public Mentore getMentoreByFirstnameAndLastname(String firstname, String lastname) {
-        return  this.mentoreRepo.findByFirstnameAndLastname(firstname, lastname).orElseThrow(
+        return  this.mentoreRepo.rechercher(firstname,lastname).orElseThrow(
                 ()-> new ResourceNotFoundException("Mentoré not found !")
         );
 

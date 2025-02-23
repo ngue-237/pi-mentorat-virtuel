@@ -11,6 +11,17 @@ public class PostReqDTO {
     private Boolean status;
     private LocalDateTime dateCreation;
 
+    public Integer getCategorieId() {
+        return categorieId;
+    }
+
+    public void setCategorieId(Integer categorieId) {
+        this.categorieId = categorieId;
+    }
+
+    private Integer categorieId;
+
+
     public String getNom() {
         return nom;
     }

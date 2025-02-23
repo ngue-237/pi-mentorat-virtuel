@@ -21,4 +21,5 @@ public interface MentoreRepo extends JpaRepository<Mentore, Integer> {
 
     @Query("select m from Mentore m where m.firstname = :firstname and m.lastname = :lastname")
     Optional<Mentore> rechercher(@Param("firstname") String firstname, @Param("lastname") String lastname);
+
 }

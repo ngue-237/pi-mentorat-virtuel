@@ -9,6 +9,16 @@ public class CommentaireReqDTO {
     private String contenu;
     private Boolean status;
     private LocalDateTime dateCreation;
+    private Integer postId;
+    private Boolean isInappropriateReported;
+
+    public Integer getPostId() {
+        return postId;
+    }
+
+    public void setPostId(Integer postId) {
+        this.postId = postId;
+    }
 
     public String getContenu() {
         return contenu;

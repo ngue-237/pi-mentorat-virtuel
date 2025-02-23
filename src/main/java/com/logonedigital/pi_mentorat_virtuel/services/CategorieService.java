@@ -1,7 +1,7 @@
 package com.logonedigital.pi_mentorat_virtuel.services;
 
-import com.logonedigital.pi_mentorat_virtuel.dto.CategorieReqDTO;
-import com.logonedigital.pi_mentorat_virtuel.dto.CategorieRespDTO;
+import com.logonedigital.pi_mentorat_virtuel.CategorieReqDTO;
+import com.logonedigital.pi_mentorat_virtuel.CategorieRespDTO;
 import com.logonedigital.pi_mentorat_virtuel.entities.Categorie;
 import org.springframework.data.domain.Page;
 

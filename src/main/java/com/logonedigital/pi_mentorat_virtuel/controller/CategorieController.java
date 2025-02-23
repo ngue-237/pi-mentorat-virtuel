@@ -1,7 +1,7 @@
 package com.logonedigital.pi_mentorat_virtuel.controller;
 
-import com.logonedigital.pi_mentorat_virtuel.dto.CategorieReqDTO;
-import com.logonedigital.pi_mentorat_virtuel.dto.CategorieRespDTO;
+import com.logonedigital.pi_mentorat_virtuel.CategorieReqDTO;
+import com.logonedigital.pi_mentorat_virtuel.CategorieRespDTO;
 import com.logonedigital.pi_mentorat_virtuel.entities.Categorie;
 import com.logonedigital.pi_mentorat_virtuel.services.CategorieService;
 import io.swagger.v3.oas.annotations.Operation;

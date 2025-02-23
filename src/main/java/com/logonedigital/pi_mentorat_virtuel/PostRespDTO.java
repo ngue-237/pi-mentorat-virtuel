@@ -12,6 +12,15 @@ public class PostRespDTO {
     private Boolean status;
     private LocalDateTime dateCreation;
     private LocalDateTime dateModification;
+    private Integer categorieId;
+
+    public Integer getCategorieId() {
+        return categorieId;
+    }
+
+    public void setCategorieId(Integer categorieId) {
+        this.categorieId = categorieId;
+    }
 
     public Integer getPostId() {
         return postId;

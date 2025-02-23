@@ -24,8 +24,6 @@ public class Categorie implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer categorieId;
-    @NotEmpty(message = "ce champ est obligatoire")
-    @Length(min = 3,message = "ce champ doit contenir au moins 3 caractere")
     private String nom;
     private String description;
     private Boolean status;
@@ -81,5 +79,5 @@ public class Categorie implements Serializable {
 
     public void setDateModification(LocalDateTime dateModification) {
         this.dateModification = dateModification;
-    }
+}
 }

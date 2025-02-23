@@ -1,14 +1,13 @@
 package com.logonedigital.pi_mentorat_virtuel.services;
 
+import com.logonedigital.pi_mentorat_virtuel.CategorieReqDTO;
+import com.logonedigital.pi_mentorat_virtuel.CategorieRespDTO;
 import com.logonedigital.pi_mentorat_virtuel.exception.ResourceNotFoundException;
-import com.logonedigital.pi_mentorat_virtuel.Mapper.CategorieMapper;
-import com.logonedigital.pi_mentorat_virtuel.dto.CategorieReqDTO;
-import com.logonedigital.pi_mentorat_virtuel.dto.CategorieRespDTO;
+import com.logonedigital.pi_mentorat_virtuel.mapper.CategorieMapper;
 import com.logonedigital.pi_mentorat_virtuel.entities.Categorie;
 import com.logonedigital.pi_mentorat_virtuel.repository.CategorieRepo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -32,7 +31,7 @@ public class CategorieServiceImpl implements CategorieService{
         Categorie categrorie = categorieMapper.toEntity(categorieReqDTO);
         Categorie addCategorie = categorieRepo.save(categrorie);
 
-        return categorieMapper.toDto(addCategorie);
+        return categorieMapper.toDto(categrorie);
     }
 
     @Override

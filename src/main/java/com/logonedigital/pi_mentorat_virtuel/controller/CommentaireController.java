@@ -1,6 +1,5 @@
 package com.logonedigital.pi_mentorat_virtuel.controller;
 
-import com.logonedigital.pi_mentorat_virtuel.dto.CategorieRespDTO;
 import com.logonedigital.pi_mentorat_virtuel.dto.CommentaireReqDTO;
 import com.logonedigital.pi_mentorat_virtuel.dto.CommentaireRespDTO;
 import com.logonedigital.pi_mentorat_virtuel.entities.Commentaire;
