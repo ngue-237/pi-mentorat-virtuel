@@ -79,7 +79,8 @@ public class  ObjectifServiceImpl implements ObjectifService {
    @Override
     public Objectif getObjectifByLibelle(String libelle) {
 
-    return  this.objectifRepo.findObjectifByLibelle(libelle)
-                .orElseThrow(()->new ResourceNotFoundException("objectif not found"));
+       return this.objectifRepo.findObjectifByLibelle(libelle)
+               .orElseThrow(() -> new ResourceNotFoundException("objectif not found"));
     }
 }
+

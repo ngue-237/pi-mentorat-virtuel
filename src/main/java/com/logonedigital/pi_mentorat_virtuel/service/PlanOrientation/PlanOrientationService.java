@@ -2,6 +2,7 @@ package com.logonedigital.pi_mentorat_virtuel.service.PlanOrientation;
 
 import com.logonedigital.pi_mentorat_virtuel.dto.PlanOrientationReqDTO;
 import com.logonedigital.pi_mentorat_virtuel.dto.PlanOrientationResDTO;
+import com.logonedigital.pi_mentorat_virtuel.entities.Objectif;
 import com.logonedigital.pi_mentorat_virtuel.entities.PlanOrientation;
 import org.springframework.data.domain.Page;
 
@@ -14,4 +15,6 @@ public interface PlanOrientationService {
     PlanOrientation getPlanOrientationById(Integer planId);
     void deletePlanOrientation(Integer planId);
     PlanOrientation updatePlanOrientation(PlanOrientation planOrientation,Integer planId);
+
+    PlanOrientation getPlanOrientationBysuivi(String suivi);
 }
