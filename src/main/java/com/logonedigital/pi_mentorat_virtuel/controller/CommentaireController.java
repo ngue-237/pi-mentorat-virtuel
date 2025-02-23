@@ -1,9 +1,9 @@
 package com.logonedigital.pi_mentorat_virtuel.controller;
 
-import com.logonedigital.pi_mentorat_virtuel.dto.CommentaireReqDTO;
-import com.logonedigital.pi_mentorat_virtuel.dto.CommentaireRespDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.Commentaire.CommentaireReqDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.Commentaire.CommentaireRespDTO;
 import com.logonedigital.pi_mentorat_virtuel.entities.Commentaire;
-import com.logonedigital.pi_mentorat_virtuel.services.CommentaireService;
+import com.logonedigital.pi_mentorat_virtuel.services.Commentaire.CommentaireService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;

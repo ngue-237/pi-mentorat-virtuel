@@ -1,7 +1,7 @@
 package com.logonedigital.pi_mentorat_virtuel.controller;
 
 import com.logonedigital.pi_mentorat_virtuel.entities.Thematique;
-import com.logonedigital.pi_mentorat_virtuel.service.Thematique.ThematiqueService;
+import com.logonedigital.pi_mentorat_virtuel.services.Thematique.ThematiqueService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,8 +1,8 @@
 
 package com.logonedigital.pi_mentorat_virtuel.mapper;
 
-import com.logonedigital.pi_mentorat_virtuel.dto.CommentaireReqDTO;
-import com.logonedigital.pi_mentorat_virtuel.dto.CommentaireRespDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.Commentaire.CommentaireReqDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.Commentaire.CommentaireRespDTO;
 import com.logonedigital.pi_mentorat_virtuel.entities.Commentaire;
 import com.logonedigital.pi_mentorat_virtuel.entities.Post;
 import org.springframework.stereotype.Component;

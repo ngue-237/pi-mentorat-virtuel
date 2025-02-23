@@ -1,7 +1,7 @@
 package com.logonedigital.pi_mentorat_virtuel.Mapper;
 
-import com.logonedigital.pi_mentorat_virtuel.dto.PostReqDTO;
-import com.logonedigital.pi_mentorat_virtuel.dto.PostRespDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.Post.PostReqDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.Post.PostRespDTO;
 import com.logonedigital.pi_mentorat_virtuel.entities.Categorie;
 import com.logonedigital.pi_mentorat_virtuel.entities.Post;
 import org.springframework.stereotype.Component;

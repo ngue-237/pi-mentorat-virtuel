@@ -1,7 +1,7 @@
 package com.logonedigital.pi_mentorat_virtuel.controller;
 
 import com.logonedigital.pi_mentorat_virtuel.entities.FeedBack;
-import com.logonedigital.pi_mentorat_virtuel.service.FeedBack.FeedBackService;
+import com.logonedigital.pi_mentorat_virtuel.services.FeedBack.FeedBackService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

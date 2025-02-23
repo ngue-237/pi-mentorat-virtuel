@@ -3,8 +3,8 @@ package com.logonedigital.pi_mentorat_virtuel.services.Mentore;
 import com.logonedigital.pi_mentorat_virtuel.exception.ResourceExistException;
 import com.logonedigital.pi_mentorat_virtuel.exception.ResourceNotFoundException;
 import com.logonedigital.pi_mentorat_virtuel.mapper.MentoreMapper;
-import com.logonedigital.pi_mentorat_virtuel.dto.MentoreReqDTO;
-import com.logonedigital.pi_mentorat_virtuel.dto.MentoreRespDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.Mentore.MentoreReqDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.Mentore.MentoreRespDTO;
 import com.logonedigital.pi_mentorat_virtuel.entities.Location;
 import com.logonedigital.pi_mentorat_virtuel.entities.Mentore;
 import com.logonedigital.pi_mentorat_virtuel.repositories.LocationRepo;
@@ -17,7 +17,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 

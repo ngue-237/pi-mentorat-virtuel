@@ -1,7 +1,7 @@
 package com.logonedigital.pi_mentorat_virtuel.controller;
 
-import com.logonedigital.pi_mentorat_virtuel.dto.MentoreReqDTO;
-import com.logonedigital.pi_mentorat_virtuel.dto.MentoreRespDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.Mentore.MentoreReqDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.Mentore.MentoreRespDTO;
 import com.logonedigital.pi_mentorat_virtuel.entities.Mentore;
 import com.logonedigital.pi_mentorat_virtuel.services.Mentore.MentoreService;
 import jakarta.validation.Valid;
