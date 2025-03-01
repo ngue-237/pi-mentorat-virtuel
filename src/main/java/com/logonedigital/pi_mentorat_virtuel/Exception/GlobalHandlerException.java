@@ -1,7 +1,7 @@
 package com.logonedigital.pi_mentorat_virtuel.Exception;
 
 
-import com.logonedigital.pi_mentorat_virtuel.ErrorMessage;
+import com.logonedigital.pi_mentorat_virtuel.dto.ErrorMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;

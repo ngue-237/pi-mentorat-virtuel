@@ -1,10 +1,10 @@
 package com.logonedigital.pi_mentorat_virtuel.Mapper;
 
-import com.logonedigital.pi_mentorat_virtuel.dto.LocationReqDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.Location.LocationReqDTO;
 
-import com.logonedigital.pi_mentorat_virtuel.dto.LocationRespDTO;
-import com.logonedigital.pi_mentorat_virtuel.dto.MentoreReqDTO;
-import com.logonedigital.pi_mentorat_virtuel.dto.MentoreRespDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.Location.LocationRespDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.Mentore.MentoreReqDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.Mentore.MentoreRespDTO;
 import com.logonedigital.pi_mentorat_virtuel.entities.Location;
 import com.logonedigital.pi_mentorat_virtuel.entities.Mentore;
 import org.mapstruct.Mapper;

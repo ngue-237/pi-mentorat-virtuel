@@ -1,7 +1,7 @@
 package com.logonedigital.pi_mentorat_virtuel.coltroller;
 
-import com.logonedigital.pi_mentorat_virtuel.dto.MentoreReqDTO;
-import com.logonedigital.pi_mentorat_virtuel.dto.MentoreRespDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.Mentore.MentoreReqDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.Mentore.MentoreRespDTO;
 import com.logonedigital.pi_mentorat_virtuel.entities.Mentore;
 import com.logonedigital.pi_mentorat_virtuel.service.Mentore.MentoreService;
 import jakarta.validation.Valid;
@@ -59,7 +59,7 @@ public class MentoreController {
                 .body(this.mentoreService.getMentoreByEmail(email));
     }
 
-    @GetMapping(path = "mentores/get_by_fistname_lastname{firstname}{lastname}")
+    @GetMapping(path = "mentores/get_by_firstname_lastname{firstname}{lastname}")
     public ResponseEntity<Mentore> getMentoreByFirstnameAndLastname(@PathVariable String firstname, @PathVariable String lastname){
 
         return ResponseEntity

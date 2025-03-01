@@ -1,9 +1,9 @@
 package com.logonedigital.pi_mentorat_virtuel.controller;
 
-import com.logonedigital.pi_mentorat_virtuel.dto.Categorie.CategorieReqDTO;
-import com.logonedigital.pi_mentorat_virtuel.dto.Categorie.CategorieRespDTO;
-import com.logonedigital.pi_mentorat_virtuel.entities.Categorie;
-import com.logonedigital.pi_mentorat_virtuel.services.Categorie.CategorieService;
+import com.logonedigital.pi_mentorat_virtuel.dto.Post.PostReqDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.Post.PostRespDTO;
+import com.logonedigital.pi_mentorat_virtuel.entities.Post;
+import com.logonedigital.pi_mentorat_virtuel.services.Post.PostService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class CategorieController {
-    private final CategorieService categorieService;
+public class PostController {
+    private final PostService postService;
 
-    public CategorieController(CategorieService categorieService) {
-        this.categorieService = categorieService;
+    public PostController(PostService postService) {
+        this.postService = postService;
     }
     @Operation(
             summary = "Ajouter une nouvelle catégorie",
@@ -30,13 +30,13 @@ public class CategorieController {
             @ApiResponse(responseCode = "201", description = "Catégorie ajoutée avec succès"),
             @ApiResponse(responseCode = "400", description = "Les données envoyées sont invalides")
     })
-    @PostMapping(path = "categorie/add")
+    @PostMapping(path = "post/add")
     @ResponseBody
-    public ResponseEntity<CategorieRespDTO> addCategorie(@Valid @RequestBody CategorieReqDTO categorieReqDTO){
+    public ResponseEntity<PostRespDTO> addPost(@Valid @RequestBody PostReqDTO postReqDTO){
 
-        CategorieRespDTO addCategorie = categorieService.addCategorie(categorieReqDTO);
-        return new ResponseEntity<>(addCategorie, HttpStatus.CREATED);
 
+        PostRespDTO addPost = postService.addPost(postReqDTO);
+        return new ResponseEntity<>(addPost, HttpStatus.CREATED);
     }
     @Operation(
             summary = "Recuperer la liste des categories",
@@ -45,17 +45,29 @@ public class CategorieController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "liste des categories recuperee aec success")
     })
-    @GetMapping(path = "categorie/get-all-categorie")
-    public ResponseEntity<List<Categorie>> getAllCategorie(){
+    @GetMapping(path = "post/get-all-post")
+    public ResponseEntity<List<Post>> getAllPost(){
         return ResponseEntity
-                .ok(this.categorieService.getAllCategorie());
+                .ok(this.postService.getAllPost());
     }
-    @GetMapping(path = "categorie/pagination/{page}/{size}")
-    public ResponseEntity<Page<CategorieRespDTO>> pagination(@PathVariable int page, @PathVariable int size){
+    @GetMapping(path = "post/pagination/{pageNumber}/{pageSize}")
+    public ResponseEntity<Page<Post>> pagination(@PathVariable int pageNumber,@PathVariable int pageSize){
         return ResponseEntity
-                .ok(this.categorieService.getsCategorie(page, size));
+                .ok(this.postService.getsPost(pageNumber, pageSize));
     }
-
+    @Operation(
+            summary = "Récupérer une catégorie par son nom",
+            description = "Cette méthode permet de récupérer une catégorie spécifique en utilisant son nom unique."
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "La catégorie a été récupérée avec succès."),
+            @ApiResponse(responseCode = "404", description = "Catégorie non trouvée pour le nom donné.")
+    })
+    @GetMapping(path = "post/get-post-by-nom/{nom}")
+    public ResponseEntity<Post> getPostByNom(@PathVariable String nom){
+        return ResponseEntity
+                .ok(this.postService.getPostByNom(nom));
+    }
     @Operation(
             summary = "Récupérer une catégorie par son identifiant",
             description = "Cette méthode permet de récupérer une catégorie spécifique en utilisant son identifiant unique."
@@ -64,10 +76,10 @@ public class CategorieController {
             @ApiResponse(responseCode = "200", description = "La catégorie a été récupérée avec succès."),
             @ApiResponse(responseCode = "404", description = "Catégorie non trouvée pour l'ID donné.")
     })
-    @GetMapping(path = "categorie/get-categorie-by-id/{categorieId}")
-    public ResponseEntity<CategorieRespDTO> getCategorieById(@PathVariable Integer categorieId){
+    @GetMapping(path = "post/get-post-by-id/{postId}")
+    public ResponseEntity<Post> getPostById(@PathVariable Integer postId){
         return ResponseEntity
-                .ok(this.categorieService.getCategorieById(categorieId));
+                .ok(this.postService.getPostById(postId));
     }
     @Operation(
             summary = "Mettre à jour une catégorie existante",
@@ -77,10 +89,10 @@ public class CategorieController {
             @ApiResponse(responseCode = "200", description = "La catégorie a été mise à jour avec succès."),
             @ApiResponse(responseCode = "400", description = "Les données envoyées sont invalides ou incomplètes.")
     })
-    @PutMapping(path = "categorie/update-categorie-by-id/{categorieId}")
-    public ResponseEntity<Categorie> updateCategorieById(@Valid @RequestBody Categorie categrorie, @PathVariable Integer categorieId){
+    @PutMapping(path = "post/update-post-by-id/{postId}")
+    public ResponseEntity<Post> updatePostById(@Valid @RequestBody Post post, @PathVariable Integer postId){
         return ResponseEntity
-                .ok(this.categorieService.updateCategorie(categrorie, categorieId));
+                .ok(this.postService.updatePostById(post, postId));
     }
     @Operation(
             summary = "Supprimer une catégorie par son identifiant",
@@ -90,11 +102,10 @@ public class CategorieController {
             @ApiResponse(responseCode = "200", description = "Catégorie supprimée avec succès."),
             @ApiResponse(responseCode = "404", description = "Catégorie non trouvée pour l'ID donné.")
     })
-    @DeleteMapping(path = "categorie/delete-categorie-by-id/{categorieId}")
-    public ResponseEntity<String> deleteCategorieById(@PathVariable Integer categorieId){
-        this.categorieService.deleteCategorieById(categorieId);
+    @DeleteMapping(path = "post/delete-post-by-id/{postId}")
+    public ResponseEntity<String> deletePostById(@PathVariable Integer postId){
+        this.postService.deletePostById(postId);
         return ResponseEntity
-                .ok("category deleted successfully!");
+                .ok("post deleted successfully!!");
     }
-
 }
