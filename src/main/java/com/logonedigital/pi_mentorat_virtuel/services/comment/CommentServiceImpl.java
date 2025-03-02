@@ -38,19 +38,19 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public List<Comment> getAllcom() {
+    public List<Comment> getAllcoment() {
         return this.commentRepo.findAll();
     }
 
 
     @Override
-    public Comment getById(Integer commentaireId) {
-        return this.commentRepo.findById(commentaireId).get();
+    public Comment getById(Integer commentId) {
+        return this.commentRepo.findById(commentId).get();
     }
 
     @Override
-    public Comment updated(Comment comment, Integer commentaireId) {
-        Comment comment1 = this.commentRepo.findById(commentaireId).get();
+    public Comment updated(Comment comment, Integer commentId) {
+        Comment comment1 = this.commentRepo.findById(commentId).get();
         if(comment.getContent() != null) {
             comment1.setContent(comment.getContent());
         }
@@ -63,8 +63,8 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public void delete(Integer commentaireId) {
-        this.commentRepo.deleteById(commentaireId);
+    public void delete(Integer commentId) {
+        this.commentRepo.deleteById(commentId);
     }
 
 }

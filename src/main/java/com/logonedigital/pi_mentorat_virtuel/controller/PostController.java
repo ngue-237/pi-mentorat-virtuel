@@ -1,10 +1,9 @@
 package com.logonedigital.pi_mentorat_virtuel.controller;
 
-import com.logonedigital.pi_mentorat_virtuel.dto.CommentaireRespDTO;
-import com.logonedigital.pi_mentorat_virtuel.dto.PostReqDTO;
-import com.logonedigital.pi_mentorat_virtuel.dto.PostRespDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.Post.PostReqDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.Post.PostRespDTO;
 import com.logonedigital.pi_mentorat_virtuel.entities.Post;
-import com.logonedigital.pi_mentorat_virtuel.services.PostService;
+import com.logonedigital.pi_mentorat_virtuel.services.Post.PostService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;

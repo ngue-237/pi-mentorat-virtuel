@@ -2,6 +2,7 @@ package com.logonedigital.pi_mentorat_virtuel.services.sujet;
 
 import com.github.slugify.Slugify;
 import com.logonedigital.pi_mentorat_virtuel.entities.Suje;
+import com.logonedigital.pi_mentorat_virtuel.exception.ResourceExistException;
 import com.logonedigital.pi_mentorat_virtuel.exception.ResourceNotFoundException;
 import com.logonedigital.pi_mentorat_virtuel.repositories.SujeRepo;
 import org.springframework.data.domain.Page;
@@ -26,7 +27,7 @@ public class SujeServiceImpl implements SujeService {
         final Slugify slg = Slugify.builder().build();
         Optional<Suje> sujet1 = this.sujeRepo.findByTitle(suje.getTitle());
         if(sujet1.isPresent())
-            throw new ResourceExisteException("Sujet existe");
+            throw new ResourceExistException("Sujet existe");
         suje.setSlug(slg.slugify(suje.getTitle()));
         suje.setContent(suje.getContent());
         suje.setCreatedAt(new Date());

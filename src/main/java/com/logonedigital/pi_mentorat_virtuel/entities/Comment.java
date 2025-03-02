@@ -23,7 +23,7 @@ public class Comment implements Serializable {
     @Serial
     private static final long serialVersionUID =1L;
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer commentaireId;
+    private Integer commentId;
     @Column(columnDefinition = "text")
     private String content;
     @Length(min = 2, max = 60, message = "le nom doit etre min 3 et max 50 caracters")
@@ -43,11 +43,11 @@ public class Comment implements Serializable {
     private List<Rating> ratings;*/  // Liste des notations associées
 
     public Integer getCommentaireId() {
-        return commentaireId;
+        return commentId;
     }
 
     public void setCommentaireId(Integer commentaireId) {
-        this.commentaireId = commentaireId;
+        this.commentId = commentaireId;
     }
 
     public String getContent() {

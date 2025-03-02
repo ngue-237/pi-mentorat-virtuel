@@ -3,12 +3,12 @@ package com.logonedigital.pi_mentorat_virtuel.controller;
 
 import com.logonedigital.pi_mentorat_virtuel.entities.ImageEntity;
 import com.logonedigital.pi_mentorat_virtuel.services.fonctionnaliteavance.ImageServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
-@RequestMapping("/api/images")
 public class ImageController {
 
     private final ImageServiceImpl imageService;

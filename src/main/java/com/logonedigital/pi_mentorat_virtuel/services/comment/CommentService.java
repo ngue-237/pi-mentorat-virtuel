@@ -8,9 +8,9 @@ import java.util.List;
 public interface CommentService {
     Comment add(Comment comment);
     Page<Comment> getComment(int offset, int pageSize);
-    List<Comment> getAllcom();
-    Comment getById(Integer commentaireId);
-    Comment updated(Comment comment, Integer commentaireId);
-    void delete(Integer commentaireId);
+    List<Comment> getAllcoment();
+    Comment getById(Integer commentId);
+    Comment updated(Comment comment, Integer commentId);
+    void delete(Integer commentId);
 
 }

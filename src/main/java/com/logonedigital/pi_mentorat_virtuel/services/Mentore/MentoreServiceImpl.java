@@ -3,8 +3,8 @@ package com.logonedigital.pi_mentorat_virtuel.services.Mentore;
 import com.logonedigital.pi_mentorat_virtuel.exception.ResourceExistException;
 import com.logonedigital.pi_mentorat_virtuel.exception.ResourceNotFoundException;
 import com.logonedigital.pi_mentorat_virtuel.mapper.MentoreMapper;
-import com.logonedigital.pi_mentorat_virtuel.dto.MentoreReqDTO;
-import com.logonedigital.pi_mentorat_virtuel.dto.MentoreRespDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.Mentore.MentoreReqDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.Mentore.MentoreRespDTO;
 import com.logonedigital.pi_mentorat_virtuel.entities.Location;
 import com.logonedigital.pi_mentorat_virtuel.entities.Mentore;
 import com.logonedigital.pi_mentorat_virtuel.repositories.LocationRepo;
@@ -16,7 +16,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,7 +42,7 @@ public class MentoreServiceImpl implements MentoreService {
             throw new ResourceExistException("This email already exist !");
         //DTOS
         Mentore mentore = this.mentoreMapper.fromMentoreReqDTO(mentoreReqDTO);
-        mentore.setCreatedAt(new Date());
+        mentore.setCreatedAt(Instant.now());
         mentore.setStatus(true);
         //LIAISON DES DONNES
         Location location= this.mentoreMapper
@@ -85,7 +85,7 @@ public class MentoreServiceImpl implements MentoreService {
 
     @Override
     public Mentore getMentoreByFirstnameAndLastname(String firstname, String lastname) {
-        return  this.mentoreRepo.findByFirstnameAndLastname(firstname, lastname).orElseThrow(
+        return  this.mentoreRepo.rechercher(firstname,lastname).orElseThrow(
                 ()-> new ResourceNotFoundException("Mentoré not found !")
         );
 
@@ -108,7 +108,7 @@ public class MentoreServiceImpl implements MentoreService {
             mentoreToEdit.get().setPhone(mentore.getPhone());
         if(mentore.getEmail()!=null)
             mentoreToEdit.get().setEmail(mentore.getEmail());
-        mentoreToEdit.get().setUpdatedAt(new Date());
+        mentoreToEdit.get().setUpdatedAt( Instant.now());
         //Sauvegarder les modifications
         return this.mentoreRepo.saveAndFlush(mentoreToEdit.get());
     }

@@ -3,6 +3,7 @@ package com.logonedigital.pi_mentorat_virtuel.services.forum;
 import com.github.slugify.Slugify;
 import com.logonedigital.pi_mentorat_virtuel.entities.Forum;
 import com.logonedigital.pi_mentorat_virtuel.entities.Suje;
+import com.logonedigital.pi_mentorat_virtuel.exception.ResourceExistException;
 import com.logonedigital.pi_mentorat_virtuel.exception.ResourceNotFoundException;
 import com.logonedigital.pi_mentorat_virtuel.repositories.ForumRepo;
 import com.logonedigital.pi_mentorat_virtuel.repositories.SujeRepo;
@@ -33,7 +34,7 @@ public class ForumServiceImpl implements ForumService {
         final Slugify slg = Slugify.builder().build();
         Optional<Forum> forumExist = this.forumRepo.findByTitle(forum.getTitle());
            if (forumExist.isPresent())
-               throw new ResourceExisteException(" Ca existe");
+               throw new ResourceExistException(" Ca existe");
            forum.setSlug(slg.slugify(forum.getTitle()));
            forum.setTitle(forum.getTitle());
            forum.setDescription(forum.getDescription());

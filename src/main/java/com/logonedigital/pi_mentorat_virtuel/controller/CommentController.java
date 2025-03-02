@@ -16,12 +16,12 @@ public class CommentController {
     public CommentController(CommentService commentService) {
         this.commentService = commentService;
     }
-    @PostMapping(path = "commentaire/add")
+    @PostMapping(path = "comment/add")
     public ResponseEntity<Comment> add(@Valid @RequestBody Comment comment){
         return ResponseEntity.status(200).body(this.commentService.add(comment));
     }
 
-    @GetMapping(path = "commentaire/get_all/{offset}/{pageSize}")
+    @GetMapping(path = "comment/get_all/{offset}/{pageSize}")
     public ResponseEntity<Page<Comment>> getAllComment(@PathVariable int offset, @PathVariable int pageSize){
 
         return ResponseEntity
@@ -30,24 +30,24 @@ public class CommentController {
     }
 
 
-    @GetMapping( path = "commentaire/getALL")
-    public ResponseEntity<List<Comment>>  getAllcom(){
-        return ResponseEntity.status(201).body(this.commentService.getAllcom());
+    @GetMapping( path = "comment/getALL")
+    public ResponseEntity<List<Comment>>  getAllcoment(){
+        return ResponseEntity.status(201).body(this.commentService.getAllcoment());
     }
 
-    @GetMapping(path = "commentaire/getbyId{commentaireId}")
-    public ResponseEntity<Comment> getbyId(@PathVariable Integer commentaireId){
-        return ResponseEntity.status(201).body(this.commentService.getById(commentaireId));
+    @GetMapping(path = "comment/getbyId{commentId}")
+    public ResponseEntity<Comment> getbyId(@PathVariable Integer commentId){
+        return ResponseEntity.status(201).body(this.commentService.getById(commentId));
     }
 
-    @PutMapping(path = "commeentaire/update{commentaireId}")
-    public ResponseEntity<Comment> update(@RequestBody Comment comment, @PathVariable Integer commentaireId){
-        return ResponseEntity.status(201).body(this.commentService.updated(comment, commentaireId));
+    @PutMapping(path = "comment/update{commentId}")
+    public ResponseEntity<Comment> update(@RequestBody Comment comment, @PathVariable Integer commentId){
+        return ResponseEntity.status(201).body(this.commentService.updated(comment, commentId));
     }
 
-    @DeleteMapping(path = "commentaire/delete{commentaireId}")
-    public ResponseEntity<String> delete(@PathVariable Integer commentaireId){
-        this.commentService.delete(commentaireId);
-        return ResponseEntity.status(202).body("Commentaire deleted Successfully !!");
+    @DeleteMapping(path = "comment/delete{commentId}")
+    public ResponseEntity<String> delete(@PathVariable Integer commentId){
+        this.commentService.delete(commentId);
+        return ResponseEntity.status(202).body("Comment deleted Successfully !!");
     }
 }

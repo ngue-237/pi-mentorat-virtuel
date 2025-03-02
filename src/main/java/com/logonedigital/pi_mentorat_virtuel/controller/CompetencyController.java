@@ -1,9 +1,8 @@
 package com.logonedigital.pi_mentorat_virtuel.controller;
 
 import com.logonedigital.pi_mentorat_virtuel.entities.Competency;
-import com.logonedigital.pi_mentorat_virtuel.services.CompetencyService;
+import com.logonedigital.pi_mentorat_virtuel.services.Competency.CompetencyService;
 import jakarta.validation.Valid;
-import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
