@@ -1,6 +1,6 @@
 package com.logonedigital.pi_mentorat_virtuel.controller;
 
-import com.logonedigital.pi_mentorat_virtuel.service.EmailService.EmailSender;
+import com.logonedigital.pi_mentorat_virtuel.services.EmailService.EmailSender;
 import org.springframework.web.bind.annotation.GetMapping;
 
 public class EmailController

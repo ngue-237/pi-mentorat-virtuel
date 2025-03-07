@@ -1,9 +1,9 @@
 package com.logonedigital.pi_mentorat_virtuel.mapper;
 
-import com.logonedigital.pi_mentorat_virtuel.dto.ObjectifReqDTO;
-import com.logonedigital.pi_mentorat_virtuel.dto.ObjectifResDTO;
-import com.logonedigital.pi_mentorat_virtuel.dto.PlanOrientationReqDTO;
-import com.logonedigital.pi_mentorat_virtuel.dto.PlanOrientationResDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.Objectif.ObjectifReqDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.Objectif.ObjectifResDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.PlanOrientation.PlanOrientationReqDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.PlanOrientation.PlanOrientationResDTO;
 import com.logonedigital.pi_mentorat_virtuel.entities.Objectif;
 import com.logonedigital.pi_mentorat_virtuel.entities.PlanOrientation;
 import org.mapstruct.Mapper;

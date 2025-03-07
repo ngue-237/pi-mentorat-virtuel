@@ -1,10 +1,10 @@
 package com.logonedigital.pi_mentorat_virtuel.controller;
 
 
-import com.logonedigital.pi_mentorat_virtuel.dto.ObjectifReqDTO;
-import com.logonedigital.pi_mentorat_virtuel.dto.ObjectifResDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.Objectif.ObjectifReqDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.Objectif.ObjectifResDTO;
 import com.logonedigital.pi_mentorat_virtuel.entities.Objectif;
-import com.logonedigital.pi_mentorat_virtuel.service.Objectif.ObjectifService;
+import com.logonedigital.pi_mentorat_virtuel.services.Objectif.ObjectifService;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -28,7 +28,7 @@ public class Post {
     private LocalDateTime dateModification;
     @ManyToOne
     @JoinColumn(name = "categorieId")
-    private Categrorie categorie;
+    private Categorie categorie;
     @OneToMany(mappedBy = "post")
     private List<Commentaire> commentaires;
 

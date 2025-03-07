@@ -1,7 +1,7 @@
 package com.logonedigital.pi_mentorat_virtuel.controller;
 
-import com.logonedigital.pi_mentorat_virtuel.dto.LocationReqDTO;
-import com.logonedigital.pi_mentorat_virtuel.dto.LocationRespDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.Location.LocationReqDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.Location.LocationRespDTO;
 import com.logonedigital.pi_mentorat_virtuel.entities.Location;
 import com.logonedigital.pi_mentorat_virtuel.services.Location.LocationService;
 import jakarta.validation.Valid;
