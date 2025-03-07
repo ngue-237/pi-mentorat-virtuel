@@ -1,16 +1,15 @@
 package com.logonedigital.pi_mentorat_virtuel.controller;
 
 
-import com.logonedigital.pi_mentorat_virtuel.dto.PlanOrientationReqDTO;
-import com.logonedigital.pi_mentorat_virtuel.dto.PlanOrientationResDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.PlanOrientation.PlanOrientationReqDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.PlanOrientation.PlanOrientationResDTO;
 import com.logonedigital.pi_mentorat_virtuel.entities.PlanOrientation;
-import com.logonedigital.pi_mentorat_virtuel.service.PlanOrientation.PlanOrientationService;
+import com.logonedigital.pi_mentorat_virtuel.services.PlanOrientation.PlanOrientationService;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class PlanOrientationController  {

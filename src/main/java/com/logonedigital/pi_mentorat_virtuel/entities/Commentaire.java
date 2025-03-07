@@ -26,8 +26,8 @@ public class Commentaire implements Serializable {
     @NotEmpty(message = "ce champ est obligatoire")
     private String contenu;
     private Boolean status;
-    private Boolean isApproved = false; // moderation automatique par default
-    private Boolean isInappropriateReported = false; // utisalisateur peut signaler
+    private Boolean isApproved ; // moderation automatique par default
+    private Boolean isInappropriateReported ; // utisalisateur peut signaler
     private LocalDateTime dateCreation;
     private LocalDateTime dateModification;
 

@@ -1,8 +1,10 @@
-package com.logonedigital.pi_mentorat_virtuel.Mapper;
 
-import com.logonedigital.pi_mentorat_virtuel.dto.CommentaireReqDTO;
-import com.logonedigital.pi_mentorat_virtuel.dto.CommentaireRespDTO;
+package com.logonedigital.pi_mentorat_virtuel.mapper;
+
+import com.logonedigital.pi_mentorat_virtuel.dto.Commentaire.CommentaireReqDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.Commentaire.CommentaireRespDTO;
 import com.logonedigital.pi_mentorat_virtuel.entities.Commentaire;
+import com.logonedigital.pi_mentorat_virtuel.entities.Post;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -18,6 +20,12 @@ public class CommentaireMapper {
         commentaire.setStatus(commentaireReqDTO.getStatus());
         commentaire.setDateCreation(LocalDateTime.now());
 
+        if (commentaireReqDTO.getPostId()!=null){
+            Post post = new Post();
+            post.setPostId(commentaireReqDTO.getPostId());
+            commentaire.setPost(post);
+        }
+
         return commentaire;
     }
 
@@ -29,6 +37,9 @@ public class CommentaireMapper {
         commentaireRespDTO.setStatus(commentaire.getStatus());
         commentaireRespDTO.setDateCreation(commentaire.getDateCreation());
         commentaireRespDTO.setDateModification(LocalDateTime.now());
+
+        if (commentaire.getPost()!=null){
+            commentaireRespDTO.setPostId(commentaire.getPost().getPostId());}
 
         return commentaireRespDTO;
     }

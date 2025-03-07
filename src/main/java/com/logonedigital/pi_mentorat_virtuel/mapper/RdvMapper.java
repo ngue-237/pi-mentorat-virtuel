@@ -1,8 +1,8 @@
 package com.logonedigital.pi_mentorat_virtuel.Mapper;
 
-import com.logonedigital.pi_mentorat_virtuel.dto.FeedBackReqDTO;
-import com.logonedigital.pi_mentorat_virtuel.dto.RdvReqDto;
-import com.logonedigital.pi_mentorat_virtuel.dto.RdvResDto;
+import com.logonedigital.pi_mentorat_virtuel.dto.FeedBack.FeedBackReqDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.Rdv.RdvReqDto;
+import com.logonedigital.pi_mentorat_virtuel.dto.Rdv.RdvResDto;
 import com.logonedigital.pi_mentorat_virtuel.entities.FeedBack;
 import com.logonedigital.pi_mentorat_virtuel.entities.RDV;
 import org.mapstruct.Mapper;

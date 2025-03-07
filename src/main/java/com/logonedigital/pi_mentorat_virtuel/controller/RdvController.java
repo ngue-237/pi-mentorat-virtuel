@@ -1,10 +1,10 @@
 package com.logonedigital.pi_mentorat_virtuel.controller;
 
 import ch.qos.logback.core.model.Model;
-import com.logonedigital.pi_mentorat_virtuel.dto.RdvReqDto;
-import com.logonedigital.pi_mentorat_virtuel.dto.RdvResDto;
+import com.logonedigital.pi_mentorat_virtuel.dto.Rdv.RdvReqDto;
+import com.logonedigital.pi_mentorat_virtuel.dto.Rdv.RdvResDto;
 import com.logonedigital.pi_mentorat_virtuel.entities.RDV;
-import com.logonedigital.pi_mentorat_virtuel.service.Rdv.RdvService;
+import com.logonedigital.pi_mentorat_virtuel.services.Rdv.RdvService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

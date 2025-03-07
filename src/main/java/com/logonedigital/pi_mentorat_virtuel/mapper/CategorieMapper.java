@@ -1,16 +1,16 @@
-package com.logonedigital.pi_mentorat_virtuel.Mapper;
+package com.logonedigital.pi_mentorat_virtuel.mapper;
 
-import com.logonedigital.pi_mentorat_virtuel.dto.CategorieReqDTO;
-import com.logonedigital.pi_mentorat_virtuel.dto.CategorieRespDTO;
-import com.logonedigital.pi_mentorat_virtuel.entities.Categrorie;
+import com.logonedigital.pi_mentorat_virtuel.dto.Categorie.CategorieReqDTO;
+import com.logonedigital.pi_mentorat_virtuel.dto.Categorie.CategorieRespDTO;
+import com.logonedigital.pi_mentorat_virtuel.entities.Categorie;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 @Component
 public class CategorieMapper {
 
-    public Categrorie toEntity(CategorieReqDTO categorieReqDTO){
-        Categrorie categrorie = new Categrorie();
+    public Categorie toEntity(CategorieReqDTO categorieReqDTO){
+        Categorie categrorie = new Categorie();
         categrorie.setNom(categorieReqDTO.getNom());
         categrorie.setDescription(categorieReqDTO.getDescription());
         categrorie.setStatus(categorieReqDTO.getStatus());
@@ -18,7 +18,7 @@ public class CategorieMapper {
         return categrorie;
     }
 
-    public CategorieRespDTO toDto(Categrorie categrorie){
+    public CategorieRespDTO toDto(Categorie categrorie){
         CategorieRespDTO categorieRespDTO = new CategorieRespDTO();
         categorieRespDTO.setCategorieId(categrorie.getCategorieId());
         categorieRespDTO.setNom(categrorie.getNom());
