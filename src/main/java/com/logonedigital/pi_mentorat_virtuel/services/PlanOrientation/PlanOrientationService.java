@@ -14,4 +14,5 @@ public interface PlanOrientationService {
     PlanOrientation getPlanOrientationById(Integer planId);
     void deletePlanOrientation(Integer planId);
     PlanOrientation updatePlanOrientation(PlanOrientation planOrientation,Integer planId);
+    PlanOrientation getPlanOrientationBySuivi(String suivi);
 }

@@ -73,4 +73,10 @@ PlanOrientation planOrientation=this.objectifMapper.fromPlanOrientationReqDTO(pl
         return this.planOrientationRepo.saveAndFlush(planOrientationToEdit.get());
     }
 
+    @Override
+    public PlanOrientation getPlanOrientationBySuivi(String suivi) {
+        return  this.planOrientationRepo.findPlanOrientationBySuivi(suivi)
+                .orElseThrow(()->new ResourceNotFoundException("plan not found"));
+    }
+
 }

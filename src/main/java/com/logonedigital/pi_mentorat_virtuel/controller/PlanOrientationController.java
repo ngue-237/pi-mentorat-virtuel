@@ -3,6 +3,7 @@ package com.logonedigital.pi_mentorat_virtuel.controller;
 
 import com.logonedigital.pi_mentorat_virtuel.dto.PlanOrientation.PlanOrientationReqDTO;
 import com.logonedigital.pi_mentorat_virtuel.dto.PlanOrientation.PlanOrientationResDTO;
+import com.logonedigital.pi_mentorat_virtuel.entities.Objectif;
 import com.logonedigital.pi_mentorat_virtuel.entities.PlanOrientation;
 import com.logonedigital.pi_mentorat_virtuel.services.PlanOrientation.PlanOrientationService;
 import org.springframework.data.domain.Page;
@@ -61,8 +62,15 @@ public class PlanOrientationController  {
         return ResponseEntity
                 .status(202)
                 .body("Deleted successfully!");
-    }
 
+    }
+@GetMapping(path = "planOrientation/get-planOrientation-suivi/{suivi}")
+    public ResponseEntity<PlanOrientation> getPlanOrientationBysuivi(@PathVariable String suivi){
+
+        return ResponseEntity
+                .status(200)
+                .body(this.planOrientationService.getPlanOrientationBySuivi(suivi));
+}
 
 
 
